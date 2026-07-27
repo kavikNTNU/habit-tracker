@@ -40,13 +40,13 @@
 - [x] 4.2 Update script.js to send a real fetch() request to that route when a button is clicked
 - [x] 4.3 Watch the full round trip: click in the browser, see it logged on the server, inspect it in browser dev tools
 
-### 5. Remembering things (database)  [ ] not started
+### 5. Remembering things (database)  [x] done
 **Deliverable:** Habits and logs survive a server restart.
 **Concepts:** sqlite-database, sql-basics, schema-design, express-db-integration
 **Tasks:**
 - [x] 5.1 Install better-sqlite3, create a database file with a habits table and a logs table, seeded with the current 3 habits (plus a real npm supply-chain-security detour: approving better-sqlite3's blocked install script)
 - [x] 5.2 Update the POST /api/log route to insert a real row into the database instead of console.log
-- [ ] 5.3 Add a GET /api/habits route and render the habit list dynamically from the database instead of hardcoded HTML; verify persistence by restarting the server
+- [x] 5.3 Add a GET /api/habits route and render the habit list dynamically from the database instead of hardcoded HTML; verify persistence by restarting the server (plus a real "forgot to restart the server" 404 debugging detour)
 
 ### 6. The core feature — the daily loop  [ ] not started
 **Deliverable:** Create a habit, log it today, see the last 7 days of history.

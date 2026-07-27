@@ -29,7 +29,7 @@
 - depends-on: sql-basics
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: understood why a file-based DB removes setup pain vs. Postgres; understood why a managed service (Supabase) would hide the exact layers being learned; installed better-sqlite3 (approving its blocked install script), wrote db.js, ran it, and confirmed habits.db was created
+- evidence: understood why a file-based DB removes setup pain vs. Postgres; understood why a managed service (Supabase) would hide the exact layers being learned; installed better-sqlite3 (approving its blocked install script), wrote db.js, ran it, and confirmed habits.db was created; confirmed both habits and logs survive a full server restart, the section's actual deliverable
 
 ## render-deployment
 - status: introduced
@@ -92,7 +92,7 @@
 - depends-on: html-basics, functions
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: after `querySelectorAll`/`classList.toggle` were explained line by line, correctly predicted and confirmed that clicking a button strikes through its habit, and clicking again reverts it
+- evidence: after `querySelectorAll`/`classList.toggle` were explained line by line, correctly predicted and confirmed that clicking a button strikes through its habit, and clicking again reverts it; later used createElement/appendChild to build the entire habit list dynamically from database data instead of hardcoded HTML
 
 ## event-listeners
 - status: practicing
@@ -120,7 +120,7 @@
 - depends-on: javascript-fullstack
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: ran `node server.js` directly in own terminal to execute JavaScript outside the browser
+- evidence: ran `node server.js` directly in own terminal to execute JavaScript outside the browser; correctly identified that a running Node process doesn't pick up file edits automatically and needs a manual restart, after hitting a real 404 caused by exactly that
 
 ## npm-and-package-json
 - status: practicing
@@ -134,7 +134,7 @@
 - depends-on: express-backend
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: used app.use(express.static(...)) to serve files; explicit path-specific routes (app.get) deferred to section 4
+- evidence: used app.use(express.static(...)) to serve files; wrote explicit app.get('/api/habits') and app.post('/api/log') routes reading from and writing to the database
 
 ## localhost-and-ports
 - status: practicing
@@ -155,7 +155,7 @@
 - depends-on: http-methods, event-listeners
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: wrote a fetch() POST call from the click handler, correctly predicted both the strikethrough and the server-side log line, and correctly reasoned that state resets on reload because nothing is persisted yet
+- evidence: wrote a fetch() POST call from the click handler, correctly predicted both the strikethrough and the server-side log line, and correctly reasoned that state resets on reload because nothing is persisted yet; later used a GET fetch with a .then() chain to load and render habits dynamically from the database
 
 ## json
 - status: practicing
@@ -163,6 +163,13 @@
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
 - evidence: sent a real JSON body ({habit: "water"}) in a POST request and saw it arrive intact as req.body on the server, and received a JSON response back
+
+## promises-and-then
+- status: introduced
+- depends-on: fetch-api
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: taught the two-step .then() chain (parse response, then use the data) while building the dynamic habit list; not yet independently exercised with its own prediction, so capped below practicing
 
 ## request-response-cycle
 - status: practicing

@@ -6,6 +6,11 @@ const port = 3001;
 app.use(express.static(__dirname));
 app.use(express.json());
 
+app.get('/api/habits', function (req, res) {
+  const habits = db.prepare('SELECT * FROM habits').all();
+  res.json(habits);
+});
+
 app.post('/api/log', function (req, res) {
   const habit = db.prepare('SELECT id FROM habits WHERE name = ?').get(req.body.habit);
 

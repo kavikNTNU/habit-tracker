@@ -13,7 +13,7 @@
 - .git/ — generated, never edit — git's internal bookkeeping (history, staged changes, config) → [[git-basics]]
 - index.html — known (2026-07-27) — the app's home page skeleton → [[html-basics]] [[browser-rendering]]
 - style.css — known (2026-07-27) — visual styling for the page, linked from index.html → [[css-basics]]
-- script.js — known (2026-07-27) — click behavior for the "mark done" buttons, linked from index.html → [[dom-manipulation]] [[event-listeners]]
+- script.js — known (2026-07-27) — fetches habits from the API, renders them dynamically, and handles "mark done" clicks → [[dom-manipulation]] [[event-listeners]] [[fetch-api]] [[promises-and-then]]
 - package.json — known (2026-07-27) — project manifest: name, dependencies, and npm script shortcuts → [[npm-and-package-json]]
 - package-lock.json — known (2026-07-27) — exact installed versions of every dependency, for reproducibility → [[npm-and-package-json]]
 - node_modules/ — generated, never edit, gitignored — the actual downloaded code for express and its dependencies, rebuildable via `npm install`
