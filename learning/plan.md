@@ -37,7 +37,7 @@
 **Concepts:** http-methods, fetch-api, json, request-response-cycle
 **Tasks:**
 - [x] 4.1 Add an explicit Express route that receives a POST request and logs it on the server (verified manually with Invoke-RestMethod before wiring up the button)
-- [ ] 4.2 Update script.js to send a real fetch() request to that route when a button is clicked
+- [x] 4.2 Update script.js to send a real fetch() request to that route when a button is clicked
 - [ ] 4.3 Watch the full round trip: click in the browser, see it logged on the server, inspect it in browser dev tools
 
 ### 5. Remembering things (database)  [ ] not started

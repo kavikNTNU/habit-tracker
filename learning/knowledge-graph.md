@@ -151,11 +151,11 @@
 - evidence: explained GET as "give me something" vs POST as "here's something, do something with it"; sent a real POST request with Invoke-RestMethod and correctly predicted the server would log it
 
 ## fetch-api
-- status: seed
+- status: practicing
 - depends-on: http-methods, event-listeners
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: wrote a fetch() POST call from the click handler, correctly predicted both the strikethrough and the server-side log line, and correctly reasoned that state resets on reload because nothing is persisted yet
 
 ## json
 - status: practicing
