@@ -81,11 +81,11 @@
 - evidence: wrote real content into title/h1 elements and a ul/li list of own real habits (water, sleep, exercise), all in own editor; correctly predicted the list would render as three bullet points and confirmed it in the browser
 
 ## css-basics
-- status: seed
+- status: practicing
 - depends-on: html-basics
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: filled in a real background-color value after selectors/properties were explained; correctly predicted the page would look "more sorted and clean" and confirmed habit items rendered as spaced, rounded cards
 
 ## dom-manipulation
 - status: seed
@@ -291,11 +291,11 @@
 - evidence: walked through locking 5 stack decisions with tradeoffs and understanding checks before any code was written
 
 ## reviewing-a-diff
-- status: seed
+- status: practicing
 - depends-on: none
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: read a real `git diff` output, correctly identified a deleted `</head>` line from the -/+ markers, reasoned about why the browser still rendered fine (self-corrected to "browsers auto-repair invalid structure" after an initial "ignore" guess), and applied the fix themselves
 
 ## agent-memory-and-claude-md
 - status: seed
