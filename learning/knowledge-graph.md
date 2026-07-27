@@ -109,11 +109,11 @@
 - evidence: —
 
 ## git-basics
-- status: seed
+- status: practicing
 - depends-on: none
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: ran git init/add/commit/branch rename/remote add/push in own terminal; correctly predicted outcomes of git add, git commit, git remote -v, and git push each time; independently noticed an extra pushed file (skills-lock.json) without being prompted
 
 ## nodejs-runtime
 - status: seed

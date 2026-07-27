@@ -10,3 +10,4 @@
 - learning/file-map.md — known (2026-07-27) — this file: why every file in the repo exists
 - .agents/ — parked (tour deferred, not app code) — local storage for the learning skill files themselves (start-project, plan-journey, next-lesson, adopt-project)
 - skills-lock.json — parked (tour deferred, not app code) — tracks which learning skills are installed and their source
+- .git/ — generated, never edit — git's internal bookkeeping (history, staged changes, config) → [[git-basics]]

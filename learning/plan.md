@@ -12,7 +12,7 @@
 **Deliverable:** Open a file, see a hardcoded list of habits on screen.
 **Concepts:** html-basics, browser-rendering, git-basics
 **Tasks:**
-- [ ] 1.1 Set up git so the project has a save-and-undo history from the start (pulled forward from section 9: also connect to a GitHub remote now, at the learner's request — section 9 will just push to it instead of setting it up)
+- [x] 1.1 Set up git so the project has a save-and-undo history from the start (pulled forward from section 9: also connect to a GitHub remote now, at the learner's request — section 9 will just push to it instead of setting it up)
 - [ ] 1.2 Create `index.html` with a basic page skeleton and see a blank page render in the browser
 - [ ] 1.3 Add a hardcoded list of habits to the page and see it show up in the browser
 
