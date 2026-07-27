@@ -25,11 +25,11 @@
 - evidence: explained why a thin framework beats a heavy one (NestJS) for a beginner; wrote and ran a real Express server serving index.html, and explained the client-server distinction vs. opening the file directly
 
 ## sqlite-database
-- status: introduced
+- status: practicing
 - depends-on: sql-basics
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: understood why a file-based DB removes setup pain vs. Postgres; understood why a managed service (Supabase) would hide the exact layers being learned
+- evidence: understood why a file-based DB removes setup pain vs. Postgres; understood why a managed service (Supabase) would hide the exact layers being learned; installed better-sqlite3 (approving its blocked install script), wrote db.js, ran it, and confirmed habits.db was created
 
 ## render-deployment
 - status: introduced
@@ -172,18 +172,18 @@
 - evidence: sent a real POST request from a separate terminal; correctly predicted and confirmed the server logged the request body ("Received: water") and sent back a JSON response ("status: ok"); later confirmed the same round trip end-to-end from the browser via a real button click, inspected in dev tools Network tab (payload + response)
 
 ## sql-basics
-- status: seed
+- status: practicing
 - depends-on: none
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: wrote CREATE TABLE statements, a SELECT COUNT(*) check, and parameterized INSERT statements; understood why `?` placeholders prevent SQL injection instead of pasting values directly into SQL text
 
 ## schema-design
-- status: seed
+- status: practicing
 - depends-on: sql-basics
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: correctly reasoned through a two-table design (habits + logs linked by habit_id) over one table, citing less duplication and easier renames
 
 ## express-db-integration
 - status: seed
