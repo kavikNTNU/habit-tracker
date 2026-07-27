@@ -186,11 +186,11 @@
 - evidence: correctly reasoned through a two-table design (habits + logs linked by habit_id) over one table, citing less duplication and easier renames
 
 ## express-db-integration
-- status: seed
+- status: practicing
 - depends-on: express-routes, sqlite-database
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: wrote a route that looks up a habit by name and inserts a log row via better-sqlite3; verified real persisted rows via an ad hoc query, and correctly reasoned that every click always INSERTs a new row rather than toggling/removing one, distinguishing it from the purely visual frontend toggle
 
 ## date-handling
 - status: seed

@@ -45,7 +45,7 @@
 **Concepts:** sqlite-database, sql-basics, schema-design, express-db-integration
 **Tasks:**
 - [x] 5.1 Install better-sqlite3, create a database file with a habits table and a logs table, seeded with the current 3 habits (plus a real npm supply-chain-security detour: approving better-sqlite3's blocked install script)
-- [ ] 5.2 Update the POST /api/log route to insert a real row into the database instead of console.log
+- [x] 5.2 Update the POST /api/log route to insert a real row into the database instead of console.log
 - [ ] 5.3 Add a GET /api/habits route and render the habit list dynamically from the database instead of hardcoded HTML; verify persistence by restarting the server
 
 ### 6. The core feature — the daily loop  [ ] not started
