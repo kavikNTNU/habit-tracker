@@ -14,3 +14,7 @@
 - index.html — known (2026-07-27) — the app's home page skeleton → [[html-basics]] [[browser-rendering]]
 - style.css — known (2026-07-27) — visual styling for the page, linked from index.html → [[css-basics]]
 - script.js — known (2026-07-27) — click behavior for the "mark done" buttons, linked from index.html → [[dom-manipulation]] [[event-listeners]]
+- package.json — known (2026-07-27) — project manifest: name, dependencies, and npm script shortcuts → [[npm-and-package-json]]
+- package-lock.json — known (2026-07-27) — exact installed versions of every dependency, for reproducibility → [[npm-and-package-json]]
+- node_modules/ — generated, never edit, gitignored — the actual downloaded code for express and its dependencies, rebuildable via `npm install`
+- .gitignore — known (2026-07-27) — tells git which files/folders to never track (currently just node_modules) → [[git-basics]]

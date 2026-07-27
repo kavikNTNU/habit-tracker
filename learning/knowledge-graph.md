@@ -113,7 +113,7 @@
 - depends-on: none
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: ran git init/add/commit/branch rename/remote add/push in own terminal; correctly predicted outcomes of git add, git commit, git remote -v, and git push each time; independently noticed an extra pushed file (skills-lock.json) without being prompted
+- evidence: ran git init/add/commit/branch rename/remote add/push in own terminal; correctly predicted outcomes of git add, git commit, git remote -v, and git push each time; independently noticed an extra pushed file (skills-lock.json) without being prompted; explained why node_modules belongs in .gitignore but package-lock.json does not
 
 ## nodejs-runtime
 - status: seed
@@ -123,11 +123,11 @@
 - evidence: —
 
 ## npm-and-package-json
-- status: seed
+- status: practicing
 - depends-on: nodejs-runtime
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: ran `npm init -y`, toured the generated package.json field by field; correctly connected "scripts" to what `npm run dev` will later execute, though initially over-framed the whole file as behavioral instructions (like CLAUDE.md) rather than a project manifest — corrected in discussion
 
 ## express-routes
 - status: seed
