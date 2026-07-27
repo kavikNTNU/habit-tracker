@@ -11,3 +11,8 @@ li {
   margin-bottom: 6px;
   border-radius: 6px;
 }
+
+.done {
+  text-decoration: line-through;
+  opacity: 0.5;
+}

@@ -13,3 +13,4 @@
 - .git/ — generated, never edit — git's internal bookkeeping (history, staged changes, config) → [[git-basics]]
 - index.html — known (2026-07-27) — the app's home page skeleton → [[html-basics]] [[browser-rendering]]
 - style.css — known (2026-07-27) — visual styling for the page, linked from index.html → [[css-basics]]
+- script.js — known (2026-07-27) — click behavior for the "mark done" buttons, linked from index.html → [[dom-manipulation]] [[event-listeners]]

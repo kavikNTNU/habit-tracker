@@ -16,13 +16,13 @@
 - [x] 1.2 Create `index.html` with a basic page skeleton and see a blank page render in the browser
 - [x] 1.3 Add a hardcoded list of habits to the page and see it show up in the browser
 
-### 2. Styling + interactivity  [ ] not started
+### 2. Styling + interactivity  [x] done
 **Deliverable:** The page looks like an app; clicking "mark done" visibly changes it (nothing saved yet).
 **Concepts:** css-basics, dom-manipulation, event-listeners
 **Tasks:**
 - [x] 2.1 Create a separate CSS file, link it to `index.html`, and add basic styling so the page looks less like plain HTML
 - [x] 2.2 Add a "mark done" button next to each habit in the HTML (plus an unplanned detour: caught and fixed a deleted `</head>` tag using `git diff`)
-- [ ] 2.3 Create a separate JS file, link it, and write an event listener that visually marks a habit as done when its button is clicked
+- [x] 2.3 Create a separate JS file, link it, and write an event listener that visually marks a habit as done when its button is clicked
 
 ### 3. A simple local server  [ ] not started
 **Deliverable:** Visiting localhost:3000 serves the page instead of opening the file directly.

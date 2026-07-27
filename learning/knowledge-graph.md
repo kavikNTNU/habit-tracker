@@ -88,18 +88,18 @@
 - evidence: filled in a real background-color value after selectors/properties were explained; correctly predicted the page would look "more sorted and clean" and confirmed habit items rendered as spaced, rounded cards
 
 ## dom-manipulation
-- status: seed
+- status: practicing
 - depends-on: html-basics, functions
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: after `querySelectorAll`/`classList.toggle` were explained line by line, correctly predicted and confirmed that clicking a button strikes through its habit, and clicking again reverts it
 
 ## event-listeners
-- status: seed
+- status: practicing
 - depends-on: dom-manipulation
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: after addEventListener was explained, correctly observed the click-triggered toggle behavior in the browser, matching the code's logic to the visible outcome
 
 ## browser-rendering
 - status: practicing
