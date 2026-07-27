@@ -24,13 +24,13 @@
 - [x] 2.2 Add a "mark done" button next to each habit in the HTML (plus an unplanned detour: caught and fixed a deleted `</head>` tag using `git diff`)
 - [x] 2.3 Create a separate JS file, link it, and write an event listener that visually marks a habit as done when its button is clicked
 
-### 3. A simple local server  [ ] not started
-**Deliverable:** Visiting localhost:3000 serves the page instead of opening the file directly.
+### 3. A simple local server  [x] done
+**Deliverable:** Visiting localhost:3000 (ended up 3001, port 3000 was taken) serves the page instead of opening the file directly.
 **Concepts:** nodejs-runtime, npm-and-package-json, express-backend, express-routes, localhost-and-ports
 **Tasks:**
 - [x] 3.1 Turn this folder into an npm project (`npm init`) and tour the resulting `package.json`
 - [x] 3.2 Install Express (`npm install express`) and tour what that created (`node_modules`, `package-lock.json`) — plus added `.gitignore` for `node_modules`
-- [ ] 3.3 Write a minimal Express server that serves `index.html`, run it, and visit `localhost:3000` in the browser
+- [x] 3.3 Write a minimal Express server that serves `index.html`, run it, and visit `localhost:3001` in the browser
 
 ### 4. Talking to the server (APIs)  [ ] not started
 **Deliverable:** Clicking "mark done" sends a real request the server receives and logs (still nothing permanent).

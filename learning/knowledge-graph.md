@@ -18,11 +18,11 @@
 - evidence: explained why skipping a framework first makes the later jump to React easier
 
 ## express-backend
-- status: introduced
+- status: practicing
 - depends-on: nodejs-runtime
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: explained why a thin framework beats a heavy one (NestJS) for a beginner
+- evidence: explained why a thin framework beats a heavy one (NestJS) for a beginner; wrote and ran a real Express server serving index.html, and explained the client-server distinction vs. opening the file directly
 
 ## sqlite-database
 - status: introduced
@@ -116,11 +116,11 @@
 - evidence: ran git init/add/commit/branch rename/remote add/push in own terminal; correctly predicted outcomes of git add, git commit, git remote -v, and git push each time; independently noticed an extra pushed file (skills-lock.json) without being prompted; explained why node_modules belongs in .gitignore but package-lock.json does not
 
 ## nodejs-runtime
-- status: seed
+- status: practicing
 - depends-on: javascript-fullstack
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: ran `node server.js` directly in own terminal to execute JavaScript outside the browser
 
 ## npm-and-package-json
 - status: practicing
@@ -130,18 +130,18 @@
 - evidence: ran `npm init -y`, toured the generated package.json field by field; correctly connected "scripts" to what `npm run dev` will later execute, though initially over-framed the whole file as behavioral instructions (like CLAUDE.md) rather than a project manifest — corrected in discussion
 
 ## express-routes
-- status: seed
+- status: practicing
 - depends-on: express-backend
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: used app.use(express.static(...)) to serve files; explicit path-specific routes (app.get) deferred to section 4
 
 ## localhost-and-ports
-- status: seed
+- status: practicing
 - depends-on: nodejs-runtime
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: hit a real port-3000-already-in-use conflict, self-resolved by switching to 3001; correctly articulated the difference between file:// access and a real localhost client-server request
 
 ## http-methods
 - status: seed

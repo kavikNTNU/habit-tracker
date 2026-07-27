@@ -18,3 +18,4 @@
 - package-lock.json — known (2026-07-27) — exact installed versions of every dependency, for reproducibility → [[npm-and-package-json]]
 - node_modules/ — generated, never edit, gitignored — the actual downloaded code for express and its dependencies, rebuildable via `npm install`
 - .gitignore — known (2026-07-27) — tells git which files/folders to never track (currently just node_modules) → [[git-basics]]
+- server.js — known (2026-07-27) — the Express server that serves the app's files over HTTP → [[express-backend]] [[express-routes]] [[localhost-and-ports]] [[nodejs-runtime]]
