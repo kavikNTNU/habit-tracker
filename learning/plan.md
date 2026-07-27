@@ -32,13 +32,13 @@
 - [x] 3.2 Install Express (`npm install express`) and tour what that created (`node_modules`, `package-lock.json`) — plus added `.gitignore` for `node_modules`
 - [x] 3.3 Write a minimal Express server that serves `index.html`, run it, and visit `localhost:3001` in the browser
 
-### 4. Talking to the server (APIs)  [ ] not started
+### 4. Talking to the server (APIs)  [x] done
 **Deliverable:** Clicking "mark done" sends a real request the server receives and logs (still nothing permanent).
 **Concepts:** http-methods, fetch-api, json, request-response-cycle
 **Tasks:**
 - [x] 4.1 Add an explicit Express route that receives a POST request and logs it on the server (verified manually with Invoke-RestMethod before wiring up the button)
 - [x] 4.2 Update script.js to send a real fetch() request to that route when a button is clicked
-- [ ] 4.3 Watch the full round trip: click in the browser, see it logged on the server, inspect it in browser dev tools
+- [x] 4.3 Watch the full round trip: click in the browser, see it logged on the server, inspect it in browser dev tools
 
 ### 5. Remembering things (database)  [ ] not started
 **Deliverable:** Habits and logs survive a server restart.

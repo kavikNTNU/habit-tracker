@@ -169,7 +169,7 @@
 - depends-on: http-methods, express-routes
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: sent a real POST request from a separate terminal; correctly predicted and confirmed the server logged the request body ("Received: water") and sent back a JSON response ("status: ok")
+- evidence: sent a real POST request from a separate terminal; correctly predicted and confirmed the server logged the request body ("Received: water") and sent back a JSON response ("status: ok"); later confirmed the same round trip end-to-end from the browser via a real button click, inspected in dev tools Network tab (payload + response)
 
 ## sql-basics
 - status: seed
