@@ -144,11 +144,11 @@
 - evidence: hit a real port-3000-already-in-use conflict, self-resolved by switching to 3001; correctly articulated the difference between file:// access and a real localhost client-server request
 
 ## http-methods
-- status: seed
+- status: practicing
 - depends-on: none
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: explained GET as "give me something" vs POST as "here's something, do something with it"; sent a real POST request with Invoke-RestMethod and correctly predicted the server would log it
 
 ## fetch-api
 - status: seed
@@ -158,18 +158,18 @@
 - evidence: —
 
 ## json
-- status: seed
+- status: practicing
 - depends-on: none
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: sent a real JSON body ({habit: "water"}) in a POST request and saw it arrive intact as req.body on the server, and received a JSON response back
 
 ## request-response-cycle
-- status: seed
+- status: practicing
 - depends-on: http-methods, express-routes
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: sent a real POST request from a separate terminal; correctly predicted and confirmed the server logged the request body ("Received: water") and sent back a JSON response ("status: ok")
 
 ## sql-basics
 - status: seed
