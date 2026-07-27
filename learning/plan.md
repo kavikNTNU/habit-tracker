@@ -8,13 +8,13 @@
 - Deployment: Render — git-push deploys, huge beginner documentation; SQLite persistence caveat to be solved explicitly in section 9, not hidden
 
 ## Sections
-### 1. A page that renders locally  [ ] not started
+### 1. A page that renders locally  [x] done
 **Deliverable:** Open a file, see a hardcoded list of habits on screen.
 **Concepts:** html-basics, browser-rendering, git-basics
 **Tasks:**
 - [x] 1.1 Set up git so the project has a save-and-undo history from the start (pulled forward from section 9: also connect to a GitHub remote now, at the learner's request — section 9 will just push to it instead of setting it up)
-- [ ] 1.2 Create `index.html` with a basic page skeleton and see a blank page render in the browser
-- [ ] 1.3 Add a hardcoded list of habits to the page and see it show up in the browser
+- [x] 1.2 Create `index.html` with a basic page skeleton and see a blank page render in the browser
+- [x] 1.3 Add a hardcoded list of habits to the page and see it show up in the browser
 
 ### 2. Styling + interactivity  [ ] not started
 **Deliverable:** The page looks like an app; clicking "mark done" visibly changes it (nothing saved yet).

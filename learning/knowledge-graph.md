@@ -74,11 +74,11 @@
 - evidence: —
 
 ## html-basics
-- status: seed
+- status: practicing
 - depends-on: none
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: wrote real content into title/h1 elements and a ul/li list of own real habits (water, sleep, exercise), all in own editor; correctly predicted the list would render as three bullet points and confirmed it in the browser
 
 ## css-basics
 - status: seed
@@ -102,11 +102,11 @@
 - evidence: —
 
 ## browser-rendering
-- status: seed
+- status: practicing
 - depends-on: html-basics
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-27
+- last-reviewed: 2026-07-27
+- evidence: predicted only the tab title would show; after opening index.html, correctly identified both the tab title and the body heading as separate rendered outputs
 
 ## git-basics
 - status: practicing

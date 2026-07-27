@@ -11,3 +11,4 @@
 - .agents/ — parked (tour deferred, not app code) — local storage for the learning skill files themselves (start-project, plan-journey, next-lesson, adopt-project)
 - skills-lock.json — parked (tour deferred, not app code) — tracks which learning skills are installed and their source
 - .git/ — generated, never edit — git's internal bookkeeping (history, staged changes, config) → [[git-basics]]
+- index.html — known (2026-07-27) — the app's home page skeleton → [[html-basics]] [[browser-rendering]]
