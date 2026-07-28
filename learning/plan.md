@@ -56,7 +56,7 @@
 - [x] 6.2 Show each habit's real "already done today" state on page load, comparing today's date against its logged_at entries (plus made today's log entry properly toggleable via INSERT/DELETE, and diagnosed an apparent stuck-habit bug that turned out to be correct odd-click-count behavior)
 - [x] 6.3 Add a way to view each habit's last 7 days of history: a date-range SQL query, a route, and a place to display it (plus a show/hide toggle refinement)
 
-### 7. Authentication  [ ] not started
+### 7. Authentication  [x] done
 **Deliverable:** The app requires logging in before you can see or edit your habits.
 **Concepts:** sessions, password-hashing, protected-routes, environment-variables
 **Tasks:**
@@ -64,7 +64,7 @@
 - [x] 7.2 Build a login route and a simple login/signup page; wire up sessions so a successful login is remembered (plus fixing a real login-screen flash caused by async timing)
 - [x] 7.3 Protect the habit API routes behind an auth-check, and add logout (plus scoping all habit/log/history data by user_id, fixing a username case-sensitivity bug, and cleaning up test accounts down to one: testuser123)
 - [x] 7.4 Move the session secret into a .env file instead of hardcoding it in server.js
-- [ ] 7.5 Add an admin role: a role column on users, an admin-only route aggregating all users' habit stats, and a simple view for it (added mid-section at the learner's request, pushing section 8 back slightly)
+- [x] 7.5 Add an admin role: a role column on users, an admin-only route aggregating all users' habit stats, and a simple view for it (added mid-section at the learner's request, pushing section 8 back slightly; also fixed a username-whitespace duplicate-account bug found along the way)
 
 ### 8. Tests and safety rails  [ ] not started
 **Deliverable:** Automated tests catch it if you accidentally break something.

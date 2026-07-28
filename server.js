@@ -16,7 +16,7 @@ app.use(session({
 }));
 
 app.post('/api/signup', function (req, res) {
-  const username = req.body.username.toLowerCase();
+  const username = req.body.username.trim().toLowerCase();
   const passwordHash = bcrypt.hashSync(req.body.password, 10);
 
   try {
@@ -29,7 +29,7 @@ app.post('/api/signup', function (req, res) {
 });
 
 app.post('/api/login', function (req, res) {
-  const user = db.prepare('SELECT * FROM users WHERE username = ?').get(req.body.username.toLowerCase());
+  const user = db.prepare('SELECT * FROM users WHERE username = ?').get(req.body.username.trim().toLowerCase());
 
   if (!user || !bcrypt.compareSync(req.body.password, user.password_hash)) {
     return res.status(401).json({ error: 'Invalid username or password' });
@@ -44,7 +44,8 @@ app.get('/api/me', function (req, res) {
     return res.status(401).json({ error: 'Not logged in' });
   }
 
-  res.json({ id: req.session.userId });
+  const user = db.prepare('SELECT id, username, role FROM users WHERE id = ?').get(req.session.userId);
+  res.json(user);
 });
 
 app.post('/api/logout', function (req, res) {
@@ -60,6 +61,30 @@ function requireAuth(req, res, next) {
 
   next();
 }
+
+function requireAdmin(req, res, next) {
+  const user = db.prepare('SELECT role FROM users WHERE id = ?').get(req.session.userId);
+
+  if (!user || user.role !== 'admin') {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  next();
+}
+
+app.get('/api/admin/stats', requireAuth, requireAdmin, function (req, res) {
+  const stats = db.prepare(`
+    SELECT users.username,
+      COUNT(DISTINCT habits.id) AS habit_count,
+      COUNT(logs.id) AS total_logs
+    FROM users
+    LEFT JOIN habits ON habits.user_id = users.id
+    LEFT JOIN logs ON logs.habit_id = habits.id
+    GROUP BY users.id
+  `).all();
+
+  res.json(stats);
+});
 
 app.get('/api/habits', requireAuth, function (req, res) {
   const habits = db.prepare(`

@@ -68,6 +68,16 @@ function showApp() {
   document.querySelector('#auth-section').classList.add('hidden');
   document.querySelector('#app-section').classList.remove('hidden');
   loadHabits();
+
+  fetch('/api/me')
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (user) {
+      if (user.role === 'admin') {
+        document.querySelector('#admin-section').classList.remove('hidden');
+      }
+    });
 }
 
 function tryAuth(url, username, password) {
@@ -98,7 +108,26 @@ document.querySelector('#logout-button').addEventListener('click', function () {
     .then(function () {
       document.querySelector('#app-section').classList.add('hidden');
       document.querySelector('#habit-list').innerHTML = '';
+      document.querySelector('#admin-section').classList.add('hidden');
+      document.querySelector('#admin-stats-list').innerHTML = '';
       document.querySelector('#auth-section').classList.remove('hidden');
+    });
+});
+
+document.querySelector('#admin-stats-button').addEventListener('click', function () {
+  fetch('/api/admin/stats')
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (stats) {
+      const list = document.querySelector('#admin-stats-list');
+      list.innerHTML = '';
+
+      stats.forEach(function (stat) {
+        const item = document.createElement('li');
+        item.textContent = stat.username + ': ' + stat.habit_count + ' habits, ' + stat.total_logs + ' total logs';
+        list.appendChild(item);
+      });
     });
 });
 

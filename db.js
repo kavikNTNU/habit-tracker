@@ -21,4 +21,13 @@ db.exec(`
   );
 `);
 
+const userColumns = db.prepare('PRAGMA table_info(users)').all();
+const hasRoleColumn = userColumns.some(function (column) {
+  return column.name === 'role';
+});
+
+if (!hasRoleColumn) {
+  db.exec("ALTER TABLE users ADD COLUMN role TEXT NOT NULL DEFAULT 'user'");
+}
+
 module.exports = db;

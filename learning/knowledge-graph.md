@@ -183,14 +183,14 @@
 - depends-on: none
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: wrote CREATE TABLE statements, a SELECT COUNT(*) check, and parameterized INSERT statements; understood why `?` placeholders prevent SQL injection instead of pasting values directly into SQL text; later read an EXISTS subquery and a DELETE statement, and used raw SELECT queries to diagnose real data during debugging
+- evidence: wrote CREATE TABLE statements, a SELECT COUNT(*) check, and parameterized INSERT statements; understood why `?` placeholders prevent SQL injection instead of pasting values directly into SQL text; later read an EXISTS subquery and a DELETE statement, and used raw SELECT queries to diagnose real data during debugging; correctly explained why LEFT JOIN kept a zero-habit user in an admin stats query where a plain JOIN would have silently dropped them, and why COUNT(DISTINCT habits.id) was needed to avoid overcounting after joining in logs
 
 ## schema-design
 - status: practicing
 - depends-on: sql-basics
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: correctly reasoned through a two-table design (habits + logs linked by habit_id) over one table, citing less duplication and easier renames; understood why CREATE TABLE IF NOT EXISTS can't retroactively add a column to an existing table, and why deleting local throwaway dev data was reasonable here vs. a real migration in production; understood UNIQUE as a database-enforced constraint, not just app logic
+- evidence: correctly reasoned through a two-table design (habits + logs linked by habit_id) over one table, citing less duplication and easier renames; understood why CREATE TABLE IF NOT EXISTS can't retroactively add a column to an existing table, and why deleting local throwaway dev data was reasonable here vs. a real migration in production; understood UNIQUE as a database-enforced constraint, not just app logic; later saw a real guarded migration (PRAGMA table_info + ALTER TABLE) that preserved existing users/habits instead of wiping them, correctly predicting the difference from the earlier delete-and-recreate approach
 
 ## express-db-integration
 - status: practicing
@@ -239,7 +239,7 @@
 - depends-on: sessions, express-routes
 - introduced: 2026-07-28
 - last-reviewed: 2026-07-28
-- evidence: wrote a requireAuth middleware and applied it to all habit routes; scoped every habit/log/history query by user_id to prevent cross-user data leaks; verified via a direct unauthenticated API call that it correctly returns 401, and understood why PowerShell displays that as a red error despite it being the correct behavior
+- evidence: wrote a requireAuth middleware and applied it to all habit routes; scoped every habit/log/history query by user_id to prevent cross-user data leaks; verified via a direct unauthenticated API call that it correctly returns 401, and understood why PowerShell displays that as a red error despite it being the correct behavior; later added a role column and a requireAdmin middleware chained after requireAuth, correctly distinguishing 401 (not logged in) from 403 (logged in but not authorized), and understood why admin accounts must be created outside the public signup flow
 
 ## environment-variables
 - status: practicing
