@@ -11,6 +11,11 @@ app.get('/api/habits', function (req, res) {
   res.json(habits);
 });
 
+app.post('/api/habits', function (req, res) {
+  const result = db.prepare('INSERT INTO habits (name) VALUES (?)').run(req.body.name);
+  res.json({ id: result.lastInsertRowid, name: req.body.name });
+});
+
 app.post('/api/log', function (req, res) {
   const habit = db.prepare('SELECT id FROM habits WHERE name = ?').get(req.body.habit);
 

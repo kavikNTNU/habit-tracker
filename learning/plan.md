@@ -51,6 +51,10 @@
 ### 6. The core feature — the daily loop  [ ] not started
 **Deliverable:** Create a habit, log it today, see the last 7 days of history.
 **Concepts:** date-handling, crud-operations, querying-by-range
+**Tasks:**
+- [x] 6.1 Add a form to create a new habit: HTML form + a POST /api/habits route that inserts it into the database
+- [ ] 6.2 Show each habit's real "already done today" state on page load, comparing today's date against its logged_at entries
+- [ ] 6.3 Add a way to view each habit's last 7 days of history: a date-range SQL query, a route, and a place to display it
 
 ### 7. Authentication  [ ] not started
 **Deliverable:** The app requires logging in before you can see or edit your habits.

@@ -46,11 +46,11 @@
 - evidence: —
 
 ## functions
-- status: seed
+- status: practicing
 - depends-on: variables
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-28
+- last-reviewed: 2026-07-28
+- evidence: extracted duplicated rendering logic into a named function (renderHabit), understood it as reusable code rather than inline duplication, and correctly used it via habits.forEach(renderHabit)
 
 ## loops
 - status: seed
@@ -99,7 +99,7 @@
 - depends-on: dom-manipulation
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: after addEventListener was explained, correctly observed the click-triggered toggle behavior in the browser, matching the code's logic to the visible outcome
+- evidence: after addEventListener was explained, correctly observed the click-triggered toggle behavior in the browser, matching the code's logic to the visible outcome; predicted a form submit would reload the page, observed it didn't, and correctly attributed that to event.preventDefault()
 
 ## browser-rendering
 - status: practicing
@@ -207,11 +207,11 @@
 - evidence: —
 
 ## crud-operations
-- status: seed
+- status: practicing
 - depends-on: express-db-integration
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-28
+- last-reviewed: 2026-07-28
+- evidence: built the full Create flow (form → POST /api/habits → INSERT), verified the new habit persists across a page refresh; independently articulated, before being taught, that "done today" should be a derived read from logs rather than deleting or permanently checking off the habit itself
 
 ## querying-by-range
 - status: seed
