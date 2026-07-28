@@ -242,11 +242,11 @@
 - evidence: wrote a requireAuth middleware and applied it to all habit routes; scoped every habit/log/history query by user_id to prevent cross-user data leaks; verified via a direct unauthenticated API call that it correctly returns 401, and understood why PowerShell displays that as a red error despite it being the correct behavior
 
 ## environment-variables
-- status: seed
+- status: practicing
 - depends-on: none
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-28
+- last-reviewed: 2026-07-28
+- evidence: generated a real random secret via crypto.randomBytes, moved it into .env (gitignored) with a safe .env.example template, wired up dotenv; correctly predicted a restart would log them out since the signing secret changed; understood process.env as a shared object of string values, and that one SESSION_SECRET signs every user's cookie rather than being per-user
 
 ## what-is-a-test
 - status: seed

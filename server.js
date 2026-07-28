@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
@@ -8,7 +10,7 @@ const port = 3001;
 app.use(express.static(__dirname));
 app.use(express.json());
 app.use(session({
-  secret: 'replace-this-later',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));

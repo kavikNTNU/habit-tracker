@@ -63,7 +63,8 @@
 - [x] 7.1 Install bcryptjs + express-session, create a users table, and build a signup route that hashes and stores a password (also added user_id to habits and removed the old auto-seeded habits, since habits now belong to a specific user)
 - [x] 7.2 Build a login route and a simple login/signup page; wire up sessions so a successful login is remembered (plus fixing a real login-screen flash caused by async timing)
 - [x] 7.3 Protect the habit API routes behind an auth-check, and add logout (plus scoping all habit/log/history data by user_id, fixing a username case-sensitivity bug, and cleaning up test accounts down to one: testuser123)
-- [ ] 7.4 Move the session secret into a .env file instead of hardcoding it in server.js
+- [x] 7.4 Move the session secret into a .env file instead of hardcoding it in server.js
+- [ ] 7.5 Add an admin role: a role column on users, an admin-only route aggregating all users' habit stats, and a simple view for it (added mid-section at the learner's request, pushing section 8 back slightly)
 
 ### 8. Tests and safety rails  [ ] not started
 **Deliverable:** Automated tests catch it if you accidentally break something.
