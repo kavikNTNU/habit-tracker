@@ -225,7 +225,7 @@
 - depends-on: request-response-cycle
 - introduced: 2026-07-28
 - last-reviewed: 2026-07-28
-- evidence: wired up express-session, set req.session.userId on login/signup, built /api/me to check login state, and verified a returning visitor stays logged in across a refresh via the session cookie; correctly explained why generic auth error messages avoid leaking which usernames exist
+- evidence: wired up express-session, set req.session.userId on login/signup, built /api/me to check login state, and verified a returning visitor stays logged in across a refresh via the session cookie; correctly explained why generic auth error messages avoid leaking which usernames exist; diagnosed a real duplicate-account bug (clicking "Sign up" instead of "Log in" creates a new empty account) and identified a case-sensitivity gap in username matching, fixed with .toLowerCase() normalization
 
 ## password-hashing
 - status: practicing
@@ -235,11 +235,11 @@
 - evidence: installed bcryptjs, wrote a signup route using hashSync with a cost factor, and directly verified in the database that the stored value was a scrambled hash rather than the plaintext password; later used bcrypt.compareSync to verify a login without ever reversing the hash
 
 ## protected-routes
-- status: seed
+- status: practicing
 - depends-on: sessions, express-routes
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-28
+- last-reviewed: 2026-07-28
+- evidence: wrote a requireAuth middleware and applied it to all habit routes; scoped every habit/log/history query by user_id to prevent cross-user data leaks; verified via a direct unauthenticated API call that it correctly returns 401, and understood why PowerShell displays that as a red error despite it being the correct behavior
 
 ## environment-variables
 - status: seed

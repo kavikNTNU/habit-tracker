@@ -14,19 +14,20 @@ app.use(session({
 }));
 
 app.post('/api/signup', function (req, res) {
+  const username = req.body.username.toLowerCase();
   const passwordHash = bcrypt.hashSync(req.body.password, 10);
 
   try {
-    const result = db.prepare('INSERT INTO users (username, password_hash) VALUES (?, ?)').run(req.body.username, passwordHash);
+    const result = db.prepare('INSERT INTO users (username, password_hash) VALUES (?, ?)').run(username, passwordHash);
     req.session.userId = result.lastInsertRowid;
-    res.json({ id: result.lastInsertRowid, username: req.body.username });
+    res.json({ id: result.lastInsertRowid, username: username });
   } catch (err) {
     res.status(400).json({ error: 'Username already taken' });
   }
 });
 
 app.post('/api/login', function (req, res) {
-  const user = db.prepare('SELECT * FROM users WHERE username = ?').get(req.body.username);
+  const user = db.prepare('SELECT * FROM users WHERE username = ?').get(req.body.username.toLowerCase());
 
   if (!user || !bcrypt.compareSync(req.body.password, user.password_hash)) {
     return res.status(401).json({ error: 'Invalid username or password' });
@@ -44,7 +45,21 @@ app.get('/api/me', function (req, res) {
   res.json({ id: req.session.userId });
 });
 
-app.get('/api/habits', function (req, res) {
+app.post('/api/logout', function (req, res) {
+  req.session.destroy(function () {
+    res.json({ status: 'ok' });
+  });
+});
+
+function requireAuth(req, res, next) {
+  if (!req.session.userId) {
+    return res.status(401).json({ error: 'Not logged in' });
+  }
+
+  next();
+}
+
+app.get('/api/habits', requireAuth, function (req, res) {
   const habits = db.prepare(`
     SELECT habits.*,
       EXISTS (
@@ -53,30 +68,37 @@ app.get('/api/habits', function (req, res) {
         AND date(logs.logged_at) = date('now')
       ) AS done_today
     FROM habits
-  `).all();
+    WHERE habits.user_id = ?
+  `).all(req.session.userId);
 
   res.json(habits);
 });
 
-app.get('/api/habits/:id/history', function (req, res) {
+app.get('/api/habits/:id/history', requireAuth, function (req, res) {
+  const habit = db.prepare('SELECT id FROM habits WHERE id = ? AND user_id = ?').get(req.params.id, req.session.userId);
+
+  if (!habit) {
+    return res.status(404).json({ error: 'Habit not found' });
+  }
+
   const logs = db.prepare(`
     SELECT date(logged_at) AS log_date
     FROM logs
     WHERE habit_id = ?
     AND logged_at >= date('now', '-6 days')
     ORDER BY log_date
-  `).all(req.params.id);
+  `).all(habit.id);
 
   res.json(logs);
 });
 
-app.post('/api/habits', function (req, res) {
-  const result = db.prepare('INSERT INTO habits (name) VALUES (?)').run(req.body.name);
+app.post('/api/habits', requireAuth, function (req, res) {
+  const result = db.prepare('INSERT INTO habits (user_id, name) VALUES (?, ?)').run(req.session.userId, req.body.name);
   res.json({ id: result.lastInsertRowid, name: req.body.name });
 });
 
-app.post('/api/log', function (req, res) {
-  const habit = db.prepare('SELECT id FROM habits WHERE name = ?').get(req.body.habit);
+app.post('/api/log', requireAuth, function (req, res) {
+  const habit = db.prepare('SELECT id FROM habits WHERE name = ? AND user_id = ?').get(req.body.habit, req.session.userId);
 
   if (!habit) {
     return res.status(404).json({ error: 'Habit not found' });

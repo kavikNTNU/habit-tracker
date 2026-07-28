@@ -93,6 +93,15 @@ document.querySelector('#signup-button').addEventListener('click', function () {
   tryAuth('/api/signup', document.querySelector('#auth-username').value, document.querySelector('#auth-password').value);
 });
 
+document.querySelector('#logout-button').addEventListener('click', function () {
+  fetch('/api/logout', { method: 'POST' })
+    .then(function () {
+      document.querySelector('#app-section').classList.add('hidden');
+      document.querySelector('#habit-list').innerHTML = '';
+      document.querySelector('#auth-section').classList.remove('hidden');
+    });
+});
+
 fetch('/api/me')
   .then(function (response) {
     if (response.ok) {
