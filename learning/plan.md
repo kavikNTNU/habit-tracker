@@ -53,7 +53,7 @@
 **Concepts:** date-handling, crud-operations, querying-by-range
 **Tasks:**
 - [x] 6.1 Add a form to create a new habit: HTML form + a POST /api/habits route that inserts it into the database
-- [ ] 6.2 Show each habit's real "already done today" state on page load, comparing today's date against its logged_at entries
+- [x] 6.2 Show each habit's real "already done today" state on page load, comparing today's date against its logged_at entries (plus made today's log entry properly toggleable via INSERT/DELETE, and diagnosed an apparent stuck-habit bug that turned out to be correct odd-click-count behavior)
 - [ ] 6.3 Add a way to view each habit's last 7 days of history: a date-range SQL query, a route, and a place to display it
 
 ### 7. Authentication  [ ] not started

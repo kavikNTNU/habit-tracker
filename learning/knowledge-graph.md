@@ -183,7 +183,7 @@
 - depends-on: none
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: wrote CREATE TABLE statements, a SELECT COUNT(*) check, and parameterized INSERT statements; understood why `?` placeholders prevent SQL injection instead of pasting values directly into SQL text
+- evidence: wrote CREATE TABLE statements, a SELECT COUNT(*) check, and parameterized INSERT statements; understood why `?` placeholders prevent SQL injection instead of pasting values directly into SQL text; later read an EXISTS subquery and a DELETE statement, and used raw SELECT queries to diagnose real data during debugging
 
 ## schema-design
 - status: practicing
@@ -197,14 +197,14 @@
 - depends-on: express-routes, sqlite-database
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: wrote a route that looks up a habit by name and inserts a log row via better-sqlite3; verified real persisted rows via an ad hoc query, and correctly reasoned that every click always INSERTs a new row rather than toggling/removing one, distinguishing it from the purely visual frontend toggle
+- evidence: wrote a route that looks up a habit by name and inserts a log row via better-sqlite3; verified real persisted rows via an ad hoc query, and correctly reasoned that every click always INSERTs a new row rather than toggling/removing one, distinguishing it from the purely visual frontend toggle; later implemented real INSERT/DELETE toggle logic for "today," and diagnosed an apparent bug by querying raw data directly instead of guessing
 
 ## date-handling
-- status: seed
+- status: practicing
 - depends-on: javascript-fullstack
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-28
+- last-reviewed: 2026-07-28
+- evidence: understood date(logged_at) = date('now') as comparing calendar dates while ignoring time-of-day; when a habit appeared "stuck" as done, correctly reconciled it by reasoning that an odd number of toggle clicks (7) leaves a final logged state, rather than assuming a bug
 
 ## crud-operations
 - status: practicing

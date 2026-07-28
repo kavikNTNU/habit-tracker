@@ -3,6 +3,10 @@ function renderHabit(habit) {
   const li = document.createElement('li');
   li.textContent = habit.name + ' ';
 
+  if (habit.done_today) {
+    li.classList.add('done');
+  }
+
   const button = document.createElement('button');
   button.textContent = 'Mark done';
   button.dataset.habit = habit.name;
