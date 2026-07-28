@@ -1,21 +1,47 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const session = require('express-session');
 const db = require('./db');
 const app = express();
 const port = 3001;
 
 app.use(express.static(__dirname));
 app.use(express.json());
+app.use(session({
+  secret: 'replace-this-later',
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.post('/api/signup', function (req, res) {
   const passwordHash = bcrypt.hashSync(req.body.password, 10);
 
   try {
     const result = db.prepare('INSERT INTO users (username, password_hash) VALUES (?, ?)').run(req.body.username, passwordHash);
+    req.session.userId = result.lastInsertRowid;
     res.json({ id: result.lastInsertRowid, username: req.body.username });
   } catch (err) {
     res.status(400).json({ error: 'Username already taken' });
   }
+});
+
+app.post('/api/login', function (req, res) {
+  const user = db.prepare('SELECT * FROM users WHERE username = ?').get(req.body.username);
+
+  if (!user || !bcrypt.compareSync(req.body.password, user.password_hash)) {
+    return res.status(401).json({ error: 'Invalid username or password' });
+  }
+
+  req.session.userId = user.id;
+  res.json({ id: user.id, username: user.username });
+});
+
+app.get('/api/me', function (req, res) {
+  if (!req.session.userId) {
+    return res.status(401).json({ error: 'Not logged in' });
+  }
+
+  res.json({ id: req.session.userId });
 });
 
 app.get('/api/habits', function (req, res) {

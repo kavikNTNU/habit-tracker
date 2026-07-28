@@ -54,12 +54,52 @@ function renderHabit(habit) {
   list.appendChild(li);
 }
 
-fetch('/api/habits')
-  .then(function (response) {
-    return response.json();
+function loadHabits() {
+  fetch('/api/habits')
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (habits) {
+      habits.forEach(renderHabit);
+    });
+}
+
+function showApp() {
+  document.querySelector('#auth-section').classList.add('hidden');
+  document.querySelector('#app-section').classList.remove('hidden');
+  loadHabits();
+}
+
+function tryAuth(url, username, password) {
+  fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username: username, password: password })
   })
-  .then(function (habits) {
-    habits.forEach(renderHabit);
+    .then(function (response) {
+      if (response.ok) {
+        showApp();
+      } else {
+        document.querySelector('#auth-error').textContent = 'Login or signup failed. Check your username and password.';
+      }
+    });
+}
+
+document.querySelector('#login-button').addEventListener('click', function () {
+  tryAuth('/api/login', document.querySelector('#auth-username').value, document.querySelector('#auth-password').value);
+});
+
+document.querySelector('#signup-button').addEventListener('click', function () {
+  tryAuth('/api/signup', document.querySelector('#auth-username').value, document.querySelector('#auth-password').value);
+});
+
+fetch('/api/me')
+  .then(function (response) {
+    if (response.ok) {
+      showApp();
+    } else {
+      document.querySelector('#auth-section').classList.remove('hidden');
+    }
   });
 
 const form = document.querySelector('#add-habit-form');

@@ -61,7 +61,7 @@
 **Concepts:** sessions, password-hashing, protected-routes, environment-variables
 **Tasks:**
 - [x] 7.1 Install bcryptjs + express-session, create a users table, and build a signup route that hashes and stores a password (also added user_id to habits and removed the old auto-seeded habits, since habits now belong to a specific user)
-- [ ] 7.2 Build a login route and a simple login/signup page; wire up sessions so a successful login is remembered
+- [x] 7.2 Build a login route and a simple login/signup page; wire up sessions so a successful login is remembered (plus fixing a real login-screen flash caused by async timing)
 - [ ] 7.3 Protect the habit API routes behind an auth-check, and add logout
 - [ ] 7.4 Move the session secret into a .env file instead of hardcoding it in server.js
 

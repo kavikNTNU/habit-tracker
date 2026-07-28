@@ -165,11 +165,11 @@
 - evidence: sent a real JSON body ({habit: "water"}) in a POST request and saw it arrive intact as req.body on the server, and received a JSON response back
 
 ## promises-and-then
-- status: introduced
+- status: practicing
 - depends-on: fetch-api
 - introduced: 2026-07-27
-- last-reviewed: 2026-07-27
-- evidence: taught the two-step .then() chain (parse response, then use the data) while building the dynamic habit list; not yet independently exercised with its own prediction, so capped below practicing
+- last-reviewed: 2026-07-28
+- evidence: taught the two-step .then() chain (parse response, then use the data) while building the dynamic habit list; later correctly diagnosed a real UI flash bug as an async-timing issue (the /api/me check taking a moment before the correct section could be shown), which was fixed by hiding both sections until the check resolves
 
 ## request-response-cycle
 - status: practicing
@@ -221,18 +221,18 @@
 - evidence: wrote a route with a URL parameter (:id) and a date('now', '-6 days') range query to fetch a habit's last 7 days of logs; end-to-end feature worked on first real test, then refined into a proper show/hide toggle
 
 ## sessions
-- status: seed
+- status: practicing
 - depends-on: request-response-cycle
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-28
+- last-reviewed: 2026-07-28
+- evidence: wired up express-session, set req.session.userId on login/signup, built /api/me to check login state, and verified a returning visitor stays logged in across a refresh via the session cookie; correctly explained why generic auth error messages avoid leaking which usernames exist
 
 ## password-hashing
 - status: practicing
 - depends-on: none
 - introduced: 2026-07-28
 - last-reviewed: 2026-07-28
-- evidence: installed bcryptjs, wrote a signup route using hashSync with a cost factor, and directly verified in the database that the stored value was a scrambled hash rather than the plaintext password
+- evidence: installed bcryptjs, wrote a signup route using hashSync with a cost factor, and directly verified in the database that the stored value was a scrambled hash rather than the plaintext password; later used bcrypt.compareSync to verify a login without ever reversing the hash
 
 ## protected-routes
 - status: seed
