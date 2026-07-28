@@ -1,10 +1,22 @@
 const express = require('express');
+const bcrypt = require('bcryptjs');
 const db = require('./db');
 const app = express();
 const port = 3001;
 
 app.use(express.static(__dirname));
 app.use(express.json());
+
+app.post('/api/signup', function (req, res) {
+  const passwordHash = bcrypt.hashSync(req.body.password, 10);
+
+  try {
+    const result = db.prepare('INSERT INTO users (username, password_hash) VALUES (?, ?)').run(req.body.username, passwordHash);
+    res.json({ id: result.lastInsertRowid, username: req.body.username });
+  } catch (err) {
+    res.status(400).json({ error: 'Username already taken' });
+  }
+});
 
 app.get('/api/habits', function (req, res) {
   const habits = db.prepare(`

@@ -190,7 +190,7 @@
 - depends-on: sql-basics
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: correctly reasoned through a two-table design (habits + logs linked by habit_id) over one table, citing less duplication and easier renames
+- evidence: correctly reasoned through a two-table design (habits + logs linked by habit_id) over one table, citing less duplication and easier renames; understood why CREATE TABLE IF NOT EXISTS can't retroactively add a column to an existing table, and why deleting local throwaway dev data was reasonable here vs. a real migration in production; understood UNIQUE as a database-enforced constraint, not just app logic
 
 ## express-db-integration
 - status: practicing
@@ -228,11 +228,11 @@
 - evidence: —
 
 ## password-hashing
-- status: seed
+- status: practicing
 - depends-on: none
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-28
+- last-reviewed: 2026-07-28
+- evidence: installed bcryptjs, wrote a signup route using hashSync with a cost factor, and directly verified in the database that the stored value was a scrambled hash rather than the plaintext password
 
 ## protected-routes
 - status: seed
