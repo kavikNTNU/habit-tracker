@@ -20,6 +20,18 @@ app.get('/api/habits', function (req, res) {
   res.json(habits);
 });
 
+app.get('/api/habits/:id/history', function (req, res) {
+  const logs = db.prepare(`
+    SELECT date(logged_at) AS log_date
+    FROM logs
+    WHERE habit_id = ?
+    AND logged_at >= date('now', '-6 days')
+    ORDER BY log_date
+  `).all(req.params.id);
+
+  res.json(logs);
+});
+
 app.post('/api/habits', function (req, res) {
   const result = db.prepare('INSERT INTO habits (name) VALUES (?)').run(req.body.name);
   res.json({ id: result.lastInsertRowid, name: req.body.name });

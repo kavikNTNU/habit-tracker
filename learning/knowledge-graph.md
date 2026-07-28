@@ -92,7 +92,7 @@
 - depends-on: html-basics, functions
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: after `querySelectorAll`/`classList.toggle` were explained line by line, correctly predicted and confirmed that clicking a button strikes through its habit, and clicking again reverts it; later used createElement/appendChild to build the entire habit list dynamically from database data instead of hardcoded HTML
+- evidence: after `querySelectorAll`/`classList.toggle` were explained line by line, correctly predicted and confirmed that clicking a button strikes through its habit, and clicking again reverts it; later used createElement/appendChild to build the entire habit list dynamically from database data instead of hardcoded HTML; built a show/hide toggle using innerHTML clearing and a children.length check
 
 ## event-listeners
 - status: practicing
@@ -134,7 +134,7 @@
 - depends-on: express-backend
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: used app.use(express.static(...)) to serve files; wrote explicit app.get('/api/habits') and app.post('/api/log') routes reading from and writing to the database
+- evidence: used app.use(express.static(...)) to serve files; wrote explicit app.get('/api/habits') and app.post('/api/log') routes reading from and writing to the database; wrote a route with a URL parameter (/api/habits/:id/history) and correctly explained req.params vs req.body
 
 ## localhost-and-ports
 - status: practicing
@@ -214,11 +214,11 @@
 - evidence: built the full Create flow (form → POST /api/habits → INSERT), verified the new habit persists across a page refresh; independently articulated, before being taught, that "done today" should be a derived read from logs rather than deleting or permanently checking off the habit itself
 
 ## querying-by-range
-- status: seed
+- status: practicing
 - depends-on: sql-basics, date-handling
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-28
+- last-reviewed: 2026-07-28
+- evidence: wrote a route with a URL parameter (:id) and a date('now', '-6 days') range query to fetch a habit's last 7 days of logs; end-to-end feature worked on first real test, then refined into a proper show/hide toggle
 
 ## sessions
 - status: seed
