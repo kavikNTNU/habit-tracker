@@ -66,13 +66,13 @@
 - [x] 7.4 Move the session secret into a .env file instead of hardcoding it in server.js
 - [x] 7.5 Add an admin role: a role column on users, an admin-only route aggregating all users' habit stats, and a simple view for it (added mid-section at the learner's request, pushing section 8 back slightly; also fixed a username-whitespace duplicate-account bug found along the way)
 
-### 8. Tests and safety rails  [ ] not started
+### 8. Tests and safety rails  [x] done
 **Deliverable:** Automated tests catch it if you accidentally break something.
 **Concepts:** what-is-a-test, test-runner, input-validation
 **Tasks:**
 - [x] 8.1 Set up Node's built-in test runner; write a first automated test for something you've been checking by hand (auth protection on /api/habits)
 - [x] 8.2 Add real input validation (reject empty/whitespace-only habit and account names), and write tests confirming both the rejection and that valid input still works (plus fixing a frontend bug where a failed request rendered a habit literally named "undefined")
-- [ ] 8.3 Add tests covering the core create → log → toggle flow, then deliberately break something on purpose and watch a test catch it
+- [x] 8.3 Add tests covering the core create → log → toggle flow, then deliberately break something on purpose and watch a test catch it (real break-fix-verify cycle completed)
 
 ### 9. Going live (deployment)  [ ] not started
 **Deliverable:** The app is live at a real URL, usable from your phone.

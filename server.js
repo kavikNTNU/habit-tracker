@@ -158,6 +158,7 @@ app.post('/api/log', requireAuth, function (req, res) {
     db.prepare('INSERT INTO logs (habit_id, logged_at) VALUES (?, ?)').run(habit.id, new Date().toISOString());
   }
 
+
   res.json({ status: 'ok' });
 });
 

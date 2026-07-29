@@ -50,7 +50,7 @@
 - depends-on: variables
 - introduced: 2026-07-28
 - last-reviewed: 2026-07-28
-- evidence: extracted duplicated rendering logic into a named function (renderHabit), understood it as reusable code rather than inline duplication, and correctly used it via habits.forEach(renderHabit)
+- evidence: extracted duplicated rendering logic into a named function (renderHabit), understood it as reusable code rather than inline duplication, and correctly used it via habits.forEach(renderHabit); later extracted a shared async test helper (signUpAndGetCookie) into its own module and imported it via destructuring (const { signUpAndGetCookie } = require('./helpers'))
 
 ## loops
 - status: seed
@@ -253,14 +253,14 @@
 - depends-on: functions
 - introduced: 2026-07-29
 - last-reviewed: 2026-07-29
-- evidence: wrote a real automated test (node:test + node:assert/strict) for something previously only checked by hand — auth protection on /api/habits — and correctly predicted it would pass
+- evidence: wrote a real automated test (node:test + node:assert/strict) for something previously only checked by hand — auth protection on /api/habits — and correctly predicted it would pass; later deliberately broke the log-toggle logic, correctly predicted the flow test would fail, read a real AssertionError (0 !== 1) down to the exact failing line, and correctly reasoned that only tests exercising that specific code path could catch it
 
 ## test-runner
 - status: practicing
 - depends-on: what-is-a-test
 - introduced: 2026-07-29
 - last-reviewed: 2026-07-29
-- evidence: ran `node --test`, read and understood the pass/fail summary output, and knew Node's built-in test runner needs no extra npm install; later wrote tests requiring real login (manually carrying a session cookie between requests) and unique per-run test data, growing the suite to 5 passing tests
+- evidence: ran `node --test`, read and understood the pass/fail summary output, and knew Node's built-in test runner needs no extra npm install; later wrote tests requiring real login (manually carrying a session cookie between requests) and unique per-run test data, growing the suite to 6 passing tests; completed a full break-fix-verify cycle on a real regression
 
 ## input-validation
 - status: practicing

@@ -25,3 +25,5 @@
 - .env.example — known (2026-07-28) — safe-to-commit template showing what env vars the app needs, no real values → [[environment-variables]]
 - tests/auth.test.js — known (2026-07-29) — automated tests for auth: rejecting unauthenticated requests, empty usernames, and short passwords → [[what-is-a-test]] [[test-runner]]
 - tests/habits.test.js — known (2026-07-29) — automated tests that habit creation rejects whitespace-only names and accepts valid ones → [[test-runner]] [[input-validation]]
+- tests/helpers.js — known (2026-07-29) — shared test helper (signUpAndGetCookie) reused across test files → [[functions]] [[test-runner]]
+- tests/flow.test.js — known (2026-07-29) — end-to-end test of create → log → toggle, verifying done_today flips correctly → [[test-runner]] [[crud-operations]] [[date-handling]]
