@@ -249,18 +249,18 @@
 - evidence: generated a real random secret via crypto.randomBytes, moved it into .env (gitignored) with a safe .env.example template, wired up dotenv; correctly predicted a restart would log them out since the signing secret changed; understood process.env as a shared object of string values, and that one SESSION_SECRET signs every user's cookie rather than being per-user
 
 ## what-is-a-test
-- status: seed
+- status: practicing
 - depends-on: functions
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-29
+- last-reviewed: 2026-07-29
+- evidence: wrote a real automated test (node:test + node:assert/strict) for something previously only checked by hand — auth protection on /api/habits — and correctly predicted it would pass
 
 ## test-runner
-- status: seed
+- status: practicing
 - depends-on: what-is-a-test
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-29
+- last-reviewed: 2026-07-29
+- evidence: ran `node --test`, read and understood the pass/fail summary output, and knew Node's built-in test runner needs no extra npm install
 
 ## input-validation
 - status: seed
