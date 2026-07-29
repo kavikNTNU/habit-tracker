@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
-const db = require('./db');
+const db = require('./db'); // note: habits.db is ephemeral on Render's free tier — wiped on every redeploy
 const app = express();
 const port = process.env.PORT || 3001;
 

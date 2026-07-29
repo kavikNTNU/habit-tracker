@@ -1,3 +1,4 @@
 node_modules/
 habits.db
 .env
+secret_prod.txt

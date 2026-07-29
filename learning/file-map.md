@@ -27,3 +27,4 @@
 - tests/habits.test.js — known (2026-07-29) — automated tests that habit creation rejects whitespace-only names and accepts valid ones → [[test-runner]] [[input-validation]]
 - tests/helpers.js — known (2026-07-29) — shared test helper (signUpAndGetCookie) reused across test files → [[functions]] [[test-runner]]
 - tests/flow.test.js — known (2026-07-29) — end-to-end test of create → log → toggle, verifying done_today flips correctly → [[test-runner]] [[crud-operations]] [[date-handling]]
+- secret_prod.txt — parked (local-only scratch note, gitignored) — holds the production SESSION_SECRET value entered into Render's dashboard → [[production-env-variables]]

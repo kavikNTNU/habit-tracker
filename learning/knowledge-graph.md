@@ -246,7 +246,7 @@
 - depends-on: none
 - introduced: 2026-07-28
 - last-reviewed: 2026-07-28
-- evidence: generated a real random secret via crypto.randomBytes, moved it into .env (gitignored) with a safe .env.example template, wired up dotenv; correctly predicted a restart would log them out since the signing secret changed; understood process.env as a shared object of string values, and that one SESSION_SECRET signs every user's cookie rather than being per-user
+- evidence: generated a real random secret via crypto.randomBytes, moved it into .env (gitignored) with a safe .env.example template, wired up dotenv; correctly predicted a restart would log them out since the signing secret changed; understood process.env as a shared object of string values, and that one SESSION_SECRET signs every user's cookie rather than being per-user; recognized process.env.PORT as another platform-provided variable (assigned by the host, not chosen locally), with a `|| 3001` fallback for local dev
 
 ## what-is-a-test
 - status: practicing
@@ -270,18 +270,18 @@
 - evidence: added trim-and-reject validation to POST /api/habits and POST /api/signup (empty/whitespace names, minimum password length), fixing the original stray ' '/'æ' habits from section 6; diagnosed and fixed a real frontend bug where an unchecked error response rendered as a habit literally named "undefined"; wrote and passed tests for both the rejection and the valid-input cases
 
 ## deploying-to-render
-- status: seed
+- status: practicing
 - depends-on: git-basics, render-deployment
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-29
+- last-reviewed: 2026-07-29
+- evidence: created a Render web service connected to the GitHub repo, configured build/start commands and a production SESSION_SECRET, deployed successfully, and verified real signup/login/habit-creation works end-to-end at the live URL
 
 ## production-env-variables
-- status: seed
+- status: practicing
 - depends-on: environment-variables, deploying-to-render
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-29
+- last-reviewed: 2026-07-29
+- evidence: understood Render's dashboard env var entry as the production equivalent of the local .env file, generated a separate secret for production rather than reusing the local one, and correctly reasoned why local test accounts (testuser123, admin) don't exist on the live deployment
 
 ## persistent-storage-caveat
 - status: seed
