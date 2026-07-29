@@ -152,10 +152,14 @@ form.addEventListener('submit', function (event) {
     body: JSON.stringify({ name: input.value })
   })
     .then(function (response) {
-      return response.json();
-    })
-    .then(function (habit) {
-      renderHabit(habit);
-      input.value = '';
+      return response.json().then(function (data) {
+        if (response.ok) {
+          renderHabit(data);
+          input.value = '';
+          document.querySelector('#habit-error').textContent = '';
+        } else {
+          document.querySelector('#habit-error').textContent = data.error;
+        }
+      });
     });
 });

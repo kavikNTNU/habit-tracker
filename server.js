@@ -16,8 +16,18 @@ app.use(session({
 }));
 
 app.post('/api/signup', function (req, res) {
-  const username = req.body.username.trim().toLowerCase();
-  const passwordHash = bcrypt.hashSync(req.body.password, 10);
+  const username = (req.body.username || '').trim().toLowerCase();
+  const password = req.body.password || '';
+
+  if (!username) {
+    return res.status(400).json({ error: 'Username cannot be empty' });
+  }
+
+  if (password.length < 6) {
+    return res.status(400).json({ error: 'Password must be at least 6 characters' });
+  }
+
+  const passwordHash = bcrypt.hashSync(password, 10);
 
   try {
     const result = db.prepare('INSERT INTO users (username, password_hash) VALUES (?, ?)').run(username, passwordHash);
@@ -120,8 +130,14 @@ app.get('/api/habits/:id/history', requireAuth, function (req, res) {
 });
 
 app.post('/api/habits', requireAuth, function (req, res) {
-  const result = db.prepare('INSERT INTO habits (user_id, name) VALUES (?, ?)').run(req.session.userId, req.body.name);
-  res.json({ id: result.lastInsertRowid, name: req.body.name });
+  const name = (req.body.name || '').trim();
+
+  if (!name) {
+    return res.status(400).json({ error: 'Habit name cannot be empty' });
+  }
+
+  const result = db.prepare('INSERT INTO habits (user_id, name) VALUES (?, ?)').run(req.session.userId, name);
+  res.json({ id: result.lastInsertRowid, name: name });
 });
 
 app.post('/api/log', requireAuth, function (req, res) {

@@ -260,14 +260,14 @@
 - depends-on: what-is-a-test
 - introduced: 2026-07-29
 - last-reviewed: 2026-07-29
-- evidence: ran `node --test`, read and understood the pass/fail summary output, and knew Node's built-in test runner needs no extra npm install
+- evidence: ran `node --test`, read and understood the pass/fail summary output, and knew Node's built-in test runner needs no extra npm install; later wrote tests requiring real login (manually carrying a session cookie between requests) and unique per-run test data, growing the suite to 5 passing tests
 
 ## input-validation
-- status: seed
+- status: practicing
 - depends-on: request-response-cycle
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-29
+- last-reviewed: 2026-07-29
+- evidence: added trim-and-reject validation to POST /api/habits and POST /api/signup (empty/whitespace names, minimum password length), fixing the original stray ' '/'æ' habits from section 6; diagnosed and fixed a real frontend bug where an unchecked error response rendered as a habit literally named "undefined"; wrote and passed tests for both the rejection and the valid-input cases
 
 ## deploying-to-render
 - status: seed

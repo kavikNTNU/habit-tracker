@@ -71,7 +71,7 @@
 **Concepts:** what-is-a-test, test-runner, input-validation
 **Tasks:**
 - [x] 8.1 Set up Node's built-in test runner; write a first automated test for something you've been checking by hand (auth protection on /api/habits)
-- [ ] 8.2 Add real input validation (reject empty/whitespace-only habit and account names), and write tests confirming both the rejection and that valid input still works
+- [x] 8.2 Add real input validation (reject empty/whitespace-only habit and account names), and write tests confirming both the rejection and that valid input still works (plus fixing a frontend bug where a failed request rendered a habit literally named "undefined")
 - [ ] 8.3 Add tests covering the core create → log → toggle flow, then deliberately break something on purpose and watch a test catch it
 
 ### 9. Going live (deployment)  [ ] not started
