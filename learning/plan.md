@@ -5,7 +5,7 @@
 - Frontend: Plain HTML/CSS/JS, no framework — learn what React later abstracts, instead of hiding it
 - Backend: Express — thin layer over Node, huge community, minimal boilerplate
 - Database: SQLite — real SQL, zero server setup; Supabase rejected because it would hide the backend/API/auth layers this project exists to teach
-- Deployment: Render — git-push deploys, huge beginner documentation; SQLite persistence caveat to be solved explicitly in section 9, not hidden
+- Deployment: Render — git-push deploys, huge beginner documentation; SQLite persistence caveat tested directly in section 9 (created a live habit, triggered a redeploy, confirmed it and the account were wiped). Real fixes, parked for v2: (a) a Render persistent disk (paid tier), attaching a real volume that survives redeploys, or (b) migrating from a SQLite file to a hosted database service (e.g. Render's managed PostgreSQL) — the more production-correct fix, and the natural next step for the SQL skills already built here
 
 ## Sections
 ### 1. A page that renders locally  [x] done
@@ -74,10 +74,10 @@
 - [x] 8.2 Add real input validation (reject empty/whitespace-only habit and account names), and write tests confirming both the rejection and that valid input still works (plus fixing a frontend bug where a failed request rendered a habit literally named "undefined")
 - [x] 8.3 Add tests covering the core create → log → toggle flow, then deliberately break something on purpose and watch a test catch it (real break-fix-verify cycle completed)
 
-### 9. Going live (deployment)  [ ] not started
+### 9. Going live (deployment)  [x] done
 **Deliverable:** The app is live at a real URL, usable from your phone.
 **Concepts:** deploying-to-render, production-env-variables, persistent-storage-caveat
 **Tasks:**
 - [x] 9.1 Prepare the app for deployment: make the port configurable via process.env.PORT, and push the final code to GitHub
 - [x] 9.2 Create a Render web service connected to the repo, configure the SESSION_SECRET environment variable there, deploy, and confirm the live URL actually works (signup, login, habits)
-- [ ] 9.3 Deliberately test the SQLite persistence caveat on the live deployment, confirm what actually happens, and document the honest tradeoff and real fixes as a parked next step
+- [x] 9.3 Deliberately test the SQLite persistence caveat on the live deployment, confirm what actually happens, and document the honest tradeoff and real fixes as a parked next step

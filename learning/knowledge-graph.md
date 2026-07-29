@@ -284,11 +284,11 @@
 - evidence: understood Render's dashboard env var entry as the production equivalent of the local .env file, generated a separate secret for production rather than reusing the local one, and correctly reasoned why local test accounts (testuser123, admin) don't exist on the live deployment
 
 ## persistent-storage-caveat
-- status: seed
+- status: practicing
 - depends-on: sqlite-database, deploying-to-render
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-29
+- last-reviewed: 2026-07-29
+- evidence: correctly separated session persistence from data persistence when predicting the outcome; created a habit on the live deployment, triggered a real redeploy via git push, and directly confirmed the habit and account both vanished, matching the ephemeral-filesystem explanation; understood the two real production fixes (a paid persistent disk, or migrating to a hosted database) as parked next steps
 
 ## writing-a-good-plan
 - status: introduced
