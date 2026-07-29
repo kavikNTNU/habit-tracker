@@ -77,3 +77,7 @@
 ### 9. Going live (deployment)  [ ] not started
 **Deliverable:** The app is live at a real URL, usable from your phone.
 **Concepts:** deploying-to-render, production-env-variables, persistent-storage-caveat
+**Tasks:**
+- [ ] 9.1 Prepare the app for deployment: make the port configurable via process.env.PORT, and push the final code to GitHub
+- [ ] 9.2 Create a Render web service connected to the repo, configure the SESSION_SECRET environment variable there, deploy, and confirm the live URL actually works (signup, login, habits)
+- [ ] 9.3 Deliberately test the SQLite persistence caveat on the live deployment, confirm what actually happens, and document the honest tradeoff and real fixes as a parked next step
