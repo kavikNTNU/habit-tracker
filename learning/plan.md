@@ -88,3 +88,9 @@
 **Tasks:**
 - [x] 10.1 Create public/, move index.html/style.css/script.js into it, update express.static to serve only that folder via path.join, and verify locally that the app still works and the server source is no longer reachable
 - [x] 10.2 Push the fix and verify it closes the same vulnerability on the live Render deployment
+
+### 11. Bug fixes from the improvement audit  [x] done
+**Deliverable:** Login can't crash on a missing username, and auth error messages show the server's real reason instead of one generic message.
+**Concepts:** input-validation (deepened), request-response-cycle (deepened)
+**Tasks:**
+- [x] 11.1 Fix the login route's missing (req.body.username || '') guard, and update tryAuth() to display the server's real error text instead of a hardcoded generic message

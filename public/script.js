@@ -87,11 +87,13 @@ function tryAuth(url, username, password) {
     body: JSON.stringify({ username: username, password: password })
   })
     .then(function (response) {
-      if (response.ok) {
-        showApp();
-      } else {
-        document.querySelector('#auth-error').textContent = 'Login or signup failed. Check your username and password.';
-      }
+      return response.json().then(function (data) {
+        if (response.ok) {
+          showApp();
+        } else {
+          document.querySelector('#auth-error').textContent = data.error;
+        }
+      });
     });
 }
 

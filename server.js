@@ -40,9 +40,12 @@ app.post('/api/signup', function (req, res) {
 });
 
 app.post('/api/login', function (req, res) {
-  const user = db.prepare('SELECT * FROM users WHERE username = ?').get(req.body.username.trim().toLowerCase());
+  const username = (req.body.username || '').trim().toLowerCase();
+  const password = req.body.password || '';
 
-  if (!user || !bcrypt.compareSync(req.body.password, user.password_hash)) {
+  const user = db.prepare('SELECT * FROM users WHERE username = ?').get(username);
+
+  if (!user || !bcrypt.compareSync(password, user.password_hash)) {
     return res.status(401).json({ error: 'Invalid username or password' });
   }
 

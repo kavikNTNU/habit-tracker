@@ -183,7 +183,7 @@
 - depends-on: http-methods, express-routes
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: sent a real POST request from a separate terminal; correctly predicted and confirmed the server logged the request body ("Received: water") and sent back a JSON response ("status: ok"); later confirmed the same round trip end-to-end from the browser via a real button click, inspected in dev tools Network tab (payload + response)
+- evidence: sent a real POST request from a separate terminal; correctly predicted and confirmed the server logged the request body ("Received: water") and sent back a JSON response ("status: ok"); later confirmed the same round trip end-to-end from the browser via a real button click, inspected in dev tools Network tab (payload + response); on a second encounter with the "read response.json() before branching on response.ok" pattern (tryAuth fix), could not independently recall or derive it despite having applied the identical pattern once before in task 8.2 — needed it shown again; worth a spaced review later, not yet solid on its own
 
 ## sql-basics
 - status: practicing
@@ -274,7 +274,7 @@
 - depends-on: request-response-cycle
 - introduced: 2026-07-29
 - last-reviewed: 2026-07-29
-- evidence: added trim-and-reject validation to POST /api/habits and POST /api/signup (empty/whitespace names, minimum password length), fixing the original stray ' '/'æ' habits from section 6; diagnosed and fixed a real frontend bug where an unchecked error response rendered as a habit literally named "undefined"; wrote and passed tests for both the rejection and the valid-input cases
+- evidence: added trim-and-reject validation to POST /api/habits and POST /api/signup (empty/whitespace names, minimum password length), fixing the original stray ' '/'æ' habits from section 6; diagnosed and fixed a real frontend bug where an unchecked error response rendered as a habit literally named "undefined"; wrote and passed tests for both the rejection and the valid-input cases; later reproduced a real unhandled crash in /api/login (missing username field) via a raw request, saw the leaked stack trace, and understood both the crash risk and the information-disclosure risk before applying the same `|| ''` guard
 
 ## deploying-to-render
 - status: practicing
