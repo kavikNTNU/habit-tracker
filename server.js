@@ -3,11 +3,12 @@ require('dotenv').config();
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
+const path = require('node:path');
 const db = require('./db'); // note: habits.db is ephemeral on Render's free tier — wiped on every redeploy
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET,

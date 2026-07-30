@@ -4,11 +4,11 @@
 <!-- seed: not yet taught | introduced: explained once | practicing: used it with help | understood: explained in own words + passed a quiz -->
 
 ## node-path-module
-- status: seed
+- status: practicing
 - depends-on: nodejs-runtime
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-30
+- last-reviewed: 2026-07-30
+- evidence: used path.join(__dirname, 'public') to fix a real, curl-verified vulnerability (server.js/db.js/package.json were downloadable as static files); understood why manual string concatenation of paths breaks across operating systems
 
 ## javascript-fullstack
 - status: introduced

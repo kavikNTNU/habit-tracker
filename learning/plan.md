@@ -86,5 +86,5 @@
 **Deliverable:** Frontend files live in `public/`, only that folder is served, and server.js/db.js are no longer downloadable as static files (a real vulnerability confirmed via curl, not just a style preference).
 **Concepts:** node-path-module, express-routes (deepened), sql-basics/schema-design (deepened, if routes split happens later)
 **Tasks:**
-- [ ] 10.1 Create public/, move index.html/style.css/script.js into it, update express.static to serve only that folder via path.join, and verify locally that the app still works and the server source is no longer reachable
+- [x] 10.1 Create public/, move index.html/style.css/script.js into it, update express.static to serve only that folder via path.join, and verify locally that the app still works and the server source is no longer reachable
 - [ ] 10.2 Push the fix and verify it closes the same vulnerability on the live Render deployment
