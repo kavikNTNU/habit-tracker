@@ -29,3 +29,5 @@
 - tests/helpers.js — known (2026-07-29) — shared test helper (signUpAndGetCookie) reused across test files → [[functions]] [[test-runner]]
 - tests/flow.test.js — known (2026-07-29) — end-to-end test of create → log → toggle, verifying done_today flips correctly → [[test-runner]] [[crud-operations]] [[date-handling]]
 - secret_prod.txt — parked (local-only scratch note, gitignored) — holds the production SESSION_SECRET value entered into Render's dashboard → [[production-env-variables]]
+- streak.js — known (2026-07-30) — pure function calculating a habit's current consecutive-day streak, no database or Express involved → [[loops]] [[conditionals]] [[date-handling]]
+- tests/streak.test.js — known (2026-07-30) — unit tests for calculateStreak, covering a gap, an empty list, an unbroken run, and "not yet logged today" → [[what-is-a-test]] [[test-runner]]

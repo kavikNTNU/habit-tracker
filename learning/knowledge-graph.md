@@ -60,18 +60,18 @@
 - evidence: extracted duplicated rendering logic into a named function (renderHabit), understood it as reusable code rather than inline duplication, and correctly used it via habits.forEach(renderHabit); later extracted a shared async test helper (signUpAndGetCookie) into its own module and imported it via destructuring (const { signUpAndGetCookie } = require('./helpers'))
 
 ## loops
-- status: seed
+- status: practicing
 - depends-on: variables
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-30
+- last-reviewed: 2026-07-30
+- evidence: read a for loop's three parts (init/condition/increment) explained piece by piece, correctly traced it by hand on a concrete example before any code ran (predicted streak=2, breaking at the gap), and understood why `break` exits early once the streak breaks
 
 ## conditionals
-- status: seed
+- status: practicing
 - depends-on: variables
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-30
+- last-reviewed: 2026-07-30
+- evidence: understood if/else branching formally in the streak edge-case and continuation checks, agreed with and could explain the "not logged today yet shouldn't break the streak" design decision, and read a ternary conditional (referenceDate ? new Date(referenceDate) : new Date())
 
 ## arrays-and-objects
 - status: seed
@@ -211,7 +211,7 @@
 - depends-on: javascript-fullstack
 - introduced: 2026-07-28
 - last-reviewed: 2026-07-28
-- evidence: understood date(logged_at) = date('now') as comparing calendar dates while ignoring time-of-day; when a habit appeared "stuck" as done, correctly reconciled it by reasoning that an odd number of toggle clicks (7) leaves a final logged state, rather than assuming a bug
+- evidence: understood date(logged_at) = date('now') as comparing calendar dates while ignoring time-of-day; when a habit appeared "stuck" as done, correctly reconciled it by reasoning that an odd number of toggle clicks (7) leaves a final logged state, rather than assuming a bug; later understood why a function relying on new Date() internally made its own tests non-reproducible, and fixed it with an optional referenceDate override
 
 ## crud-operations
 - status: practicing
@@ -267,7 +267,7 @@
 - depends-on: what-is-a-test
 - introduced: 2026-07-29
 - last-reviewed: 2026-07-29
-- evidence: ran `node --test`, read and understood the pass/fail summary output, and knew Node's built-in test runner needs no extra npm install; later wrote tests requiring real login (manually carrying a session cookie between requests) and unique per-run test data, growing the suite to 6 passing tests; completed a full break-fix-verify cycle on a real regression
+- evidence: ran `node --test`, read and understood the pass/fail summary output, and knew Node's built-in test runner needs no extra npm install; later wrote tests requiring real login (manually carrying a session cookie between requests) and unique per-run test data, growing the suite to 6 passing tests; completed a full break-fix-verify cycle on a real regression; distinguished unit tests (pure function, no server) from integration tests (real HTTP + database), and caught a hidden current-date dependency that would have made tests non-reproducible across different run days
 
 ## input-validation
 - status: practicing
