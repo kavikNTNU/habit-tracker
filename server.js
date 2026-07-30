@@ -4,6 +4,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const path = require('node:path');
+const { calculateStreak } = require('./streak');
 const db = require('./db'); // note: habits.db is ephemeral on Render's free tier — wiped on every redeploy
 const app = express();
 const port = process.env.PORT || 3001;
@@ -111,6 +112,19 @@ app.get('/api/habits', requireAuth, function (req, res) {
     FROM habits
     WHERE habits.user_id = ?
   `).all(req.session.userId);
+
+  habits.forEach(function (habit) {
+    const dates = db.prepare(`
+      SELECT DISTINCT date(logged_at) AS log_date
+      FROM logs
+      WHERE habit_id = ?
+      ORDER BY log_date DESC
+    `).all(habit.id).map(function (row) {
+      return row.log_date;
+    });
+
+    habit.streak = calculateStreak(dates);
+  });
 
   res.json(habits);
 });

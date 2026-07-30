@@ -100,5 +100,5 @@
 **Concepts:** loops, conditionals (deepened), date-handling (deepened), what-is-a-test (deepened — unit test vs. integration test)
 **Tasks:**
 - [x] 12.1 Write calculateStreak(dates) as a small pure function in its own file, with unit tests proving it handles a real streak, a broken streak, and no logs at all (plus a referenceDate parameter fix for non-reproducible date-dependent tests)
-- [ ] 12.2 Wire the streak calculation into GET /api/habits so each habit's response includes its current streak
+- [x] 12.2 Wire the streak calculation into GET /api/habits so each habit's response includes its current streak (verified against real seeded multi-day data, not just the trivial one-day case)
 - [ ] 12.3 Display the streak on the frontend next to each habit

@@ -64,7 +64,7 @@
 - depends-on: variables
 - introduced: 2026-07-30
 - last-reviewed: 2026-07-30
-- evidence: read a for loop's three parts (init/condition/increment) explained piece by piece, correctly traced it by hand on a concrete example before any code ran (predicted streak=2, breaking at the gap), and understood why `break` exits early once the streak breaks
+- evidence: read a for loop's three parts (init/condition/increment) explained piece by piece, correctly traced it by hand on a concrete example before any code ran (predicted streak=2, breaking at the gap), and understood why `break` exits early once the streak breaks; verified end-to-end against real seeded multi-day data, correctly predicting a streak of 4
 
 ## conditionals
 - status: practicing
@@ -74,11 +74,11 @@
 - evidence: understood if/else branching formally in the streak edge-case and continuation checks, agreed with and could explain the "not logged today yet shouldn't break the streak" design decision, and read a ternary conditional (referenceDate ? new Date(referenceDate) : new Date())
 
 ## arrays-and-objects
-- status: seed
+- status: practicing
 - depends-on: variables
-- introduced: —
-- last-reviewed: —
-- evidence: —
+- introduced: 2026-07-30
+- last-reviewed: 2026-07-30
+- evidence: explained the distinction between .forEach() (runs code per item, no return) and .map() (transforms and returns a new array), used .map() to convert an array of row objects ({log_date: '...'}) into a plain array of date strings for calculateStreak
 
 ## html-basics
 - status: practicing
@@ -190,7 +190,7 @@
 - depends-on: none
 - introduced: 2026-07-27
 - last-reviewed: 2026-07-27
-- evidence: wrote CREATE TABLE statements, a SELECT COUNT(*) check, and parameterized INSERT statements; understood why `?` placeholders prevent SQL injection instead of pasting values directly into SQL text; later read an EXISTS subquery and a DELETE statement, and used raw SELECT queries to diagnose real data during debugging; correctly explained why LEFT JOIN kept a zero-habit user in an admin stats query where a plain JOIN would have silently dropped them, and why COUNT(DISTINCT habits.id) was needed to avoid overcounting after joining in logs
+- evidence: wrote CREATE TABLE statements, a SELECT COUNT(*) check, and parameterized INSERT statements; understood why `?` placeholders prevent SQL injection instead of pasting values directly into SQL text; later read an EXISTS subquery and a DELETE statement, and used raw SELECT queries to diagnose real data during debugging; correctly explained why LEFT JOIN kept a zero-habit user in an admin stats query where a plain JOIN would have silently dropped them, and why COUNT(DISTINCT habits.id) was needed to avoid overcounting after joining in logs; understood why plain DISTINCT was required (not just cleanup) to prevent duplicate same-day log entries from breaking the streak loop's position-based comparison
 
 ## schema-design
 - status: practicing
