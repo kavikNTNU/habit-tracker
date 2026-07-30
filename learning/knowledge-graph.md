@@ -3,6 +3,13 @@
 <!-- statuses: seed → introduced → practicing → understood -->
 <!-- seed: not yet taught | introduced: explained once | practicing: used it with help | understood: explained in own words + passed a quiz -->
 
+## node-path-module
+- status: seed
+- depends-on: nodejs-runtime
+- introduced: —
+- last-reviewed: —
+- evidence: —
+
 ## javascript-fullstack
 - status: introduced
 - depends-on: none
