@@ -18,11 +18,13 @@ A web app to track daily habits (like drinking water, doing pushups) and log pro
 - One user (you) — login can be dead simple
 
 ### Parking lot (v2)
-- Streaks, stats, charts
+- ~~Streaks~~ — done (section 12)
+- Stats, charts
 - Weekly goals (hours/week) vs. daily habits — different logic, comes later
 - Reminders/notifications
 - Multiple habit types with custom units
 - Sharing/multi-user
+- Link to external sources (articles, research, recommendations) for good routines/habit-building — noted 2026-07-30, not yet sized or scoped
 
 ## The trunk — core components
 

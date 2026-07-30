@@ -3,6 +3,13 @@
 <!-- statuses: seed → introduced → practicing → understood -->
 <!-- seed: not yet taught | introduced: explained once | practicing: used it with help | understood: explained in own words + passed a quiz -->
 
+## css-custom-properties
+- status: practicing
+- depends-on: css-basics
+- introduced: 2026-07-30
+- last-reviewed: 2026-07-30
+- evidence: defined a small color palette as :root variables (--color-bg, --color-surface, --color-primary, etc.), refactored existing hardcoded colors to use var(--name), and understood this as the same DRY principle already applied to postJSON/getJSON, just for CSS
+
 ## node-path-module
 - status: practicing
 - depends-on: nodejs-runtime
