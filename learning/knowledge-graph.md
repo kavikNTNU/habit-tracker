@@ -71,7 +71,7 @@
 - depends-on: variables
 - introduced: 2026-07-30
 - last-reviewed: 2026-07-30
-- evidence: understood if/else branching formally in the streak edge-case and continuation checks, agreed with and could explain the "not logged today yet shouldn't break the streak" design decision, and read a ternary conditional (referenceDate ? new Date(referenceDate) : new Date())
+- evidence: understood if/else branching formally in the streak edge-case and continuation checks, agreed with and could explain the "not logged today yet shouldn't break the streak" design decision, and read a ternary conditional (referenceDate ? new Date(referenceDate) : new Date()); applied a conditional independently to only display a habit's streak when greater than 0
 
 ## arrays-and-objects
 - status: practicing

@@ -1,7 +1,13 @@
 function renderHabit(habit) {
   const list = document.querySelector('#habit-list');
   const li = document.createElement('li');
-  li.textContent = habit.name + ' ';
+  let text = habit.name;
+
+  if (habit.streak > 0) {
+    text = text + ' — streak: ' + habit.streak;
+  }
+
+  li.textContent = text + ' ';
 
   if (habit.done_today) {
     li.classList.add('done');
