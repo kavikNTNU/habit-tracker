@@ -14,7 +14,7 @@
 - public/ — known (2026-07-30) — the only folder actually reachable from a browser; holds index.html, style.css, script.js, deliberately separated from server code → [[node-path-module]]
 - public/index.html — known (2026-07-27) — the app's home page skeleton → [[html-basics]] [[browser-rendering]]
 - public/style.css — known (2026-07-27) — visual styling for the page, linked from index.html → [[css-basics]]
-- public/script.js — known (2026-07-27) — fetches habits from the API, renders them dynamically, and handles "mark done" clicks → [[dom-manipulation]] [[event-listeners]] [[fetch-api]] [[promises-and-then]]
+- public/script.js — known (2026-07-27) — fetches habits from the API, renders them dynamically, and handles "mark done" clicks; all fetch calls now go through shared getJSON/postJSON helpers → [[dom-manipulation]] [[event-listeners]] [[fetch-api]] [[promises-and-then]] [[functions]]
 - package.json — known (2026-07-27) — project manifest: name, dependencies, and npm script shortcuts → [[npm-and-package-json]]
 - package-lock.json — known (2026-07-27) — exact installed versions of every dependency, for reproducibility → [[npm-and-package-json]]
 - node_modules/ — generated, never edit, gitignored — the actual downloaded code for express and its dependencies, rebuildable via `npm install`

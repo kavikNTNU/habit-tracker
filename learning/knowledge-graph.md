@@ -57,7 +57,7 @@
 - depends-on: variables
 - introduced: 2026-07-28
 - last-reviewed: 2026-07-28
-- evidence: extracted duplicated rendering logic into a named function (renderHabit), understood it as reusable code rather than inline duplication, and correctly used it via habits.forEach(renderHabit); later extracted a shared async test helper (signUpAndGetCookie) into its own module and imported it via destructuring (const { signUpAndGetCookie } = require('./helpers'))
+- evidence: extracted duplicated rendering logic into a named function (renderHabit), understood it as reusable code rather than inline duplication, and correctly used it via habits.forEach(renderHabit); later extracted a shared async test helper (signUpAndGetCookie) into its own module and imported it via destructuring (const { signUpAndGetCookie } = require('./helpers')); consolidated 8 duplicated fetch call sites into two shared helpers (getJSON, postJSON), correctly explaining why postJSON needs to return { ok, body } while getJSON doesn't, and correctly reasoning that one outlier call site should stay unrefactored rather than forcing a bad fit
 
 ## loops
 - status: practicing
@@ -267,7 +267,7 @@
 - depends-on: what-is-a-test
 - introduced: 2026-07-29
 - last-reviewed: 2026-07-29
-- evidence: ran `node --test`, read and understood the pass/fail summary output, and knew Node's built-in test runner needs no extra npm install; later wrote tests requiring real login (manually carrying a session cookie between requests) and unique per-run test data, growing the suite to 6 passing tests; completed a full break-fix-verify cycle on a real regression; distinguished unit tests (pure function, no server) from integration tests (real HTTP + database), and caught a hidden current-date dependency that would have made tests non-reproducible across different run days
+- evidence: ran `node --test`, read and understood the pass/fail summary output, and knew Node's built-in test runner needs no extra npm install; later wrote tests requiring real login (manually carrying a session cookie between requests) and unique per-run test data, growing the suite to 6 passing tests; completed a full break-fix-verify cycle on a real regression; distinguished unit tests (pure function, no server) from integration tests (real HTTP + database), and caught a hidden current-date dependency that would have made tests non-reproducible across different run days; recognized after a frontend refactor that the whole suite only exercises the backend, so a green test run didn't actually verify script.js — the manual walkthrough was the real check
 
 ## input-validation
 - status: practicing

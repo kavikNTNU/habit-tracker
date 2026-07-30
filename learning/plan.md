@@ -102,3 +102,11 @@
 - [x] 12.1 Write calculateStreak(dates) as a small pure function in its own file, with unit tests proving it handles a real streak, a broken streak, and no logs at all (plus a referenceDate parameter fix for non-reproducible date-dependent tests)
 - [x] 12.2 Wire the streak calculation into GET /api/habits so each habit's response includes its current streak (verified against real seeded multi-day data, not just the trivial one-day case)
 - [x] 12.3 Display the streak on the frontend next to each habit
+
+### 13. Shared fetch helpers  [x] done
+**Deliverable:** All 8 fetch call sites in script.js go through two small shared helpers (postJSON, getJSON) instead of repeating the same boilerplate; one intentional exception left as raw fetch since it didn't fit either helper's shape.
+**Concepts:** functions (deepened — real DRY refactor), promises-and-then (deepened)
+**Tasks:**
+- [x] 13.1 Write postJSON(url, data) and getJSON(url) as shared helper functions
+- [x] 13.2 Refactor every fetch call site to use them, and manually re-verify every feature still works (signup, login, logout, add habit, mark done, history, admin stats)
+- [x] 13.3 Run the full automated test suite to prove the refactor didn't break anything — the textbook use case for having tests in the first place (plus discovering the suite doesn't cover the frontend at all)
