@@ -8,7 +8,7 @@
 - depends-on: nodejs-runtime
 - introduced: 2026-07-30
 - last-reviewed: 2026-07-30
-- evidence: used path.join(__dirname, 'public') to fix a real, curl-verified vulnerability (server.js/db.js/package.json were downloadable as static files); understood why manual string concatenation of paths breaks across operating systems
+- evidence: used path.join(__dirname, 'public') to fix a real, curl-verified vulnerability (server.js/db.js/package.json were downloadable as static files); understood why manual string concatenation of paths breaks across operating systems; verified the same fix on the live Render deployment, not just locally
 
 ## javascript-fullstack
 - status: introduced
@@ -281,7 +281,7 @@
 - depends-on: git-basics, render-deployment
 - introduced: 2026-07-29
 - last-reviewed: 2026-07-29
-- evidence: created a Render web service connected to the GitHub repo, configured build/start commands and a production SESSION_SECRET, deployed successfully, and verified real signup/login/habit-creation works end-to-end at the live URL
+- evidence: created a Render web service connected to the GitHub repo, configured build/start commands and a production SESSION_SECRET, deployed successfully, and verified real signup/login/habit-creation works end-to-end at the live URL; later pushed a real security fix and verified via curl that it correctly propagated to the live deployment
 
 ## production-env-variables
 - status: practicing
