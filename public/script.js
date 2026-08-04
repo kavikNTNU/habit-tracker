@@ -25,7 +25,10 @@ function renderHabit(habit) {
     text = text + ' — streak: ' + habit.streak;
   }
 
-  li.textContent = text + ' ';
+  const nameSpan = document.createElement('span');
+  nameSpan.classList.add('habit-name');
+  nameSpan.textContent = text;
+  li.appendChild(nameSpan);
 
   if (habit.done_today) {
     li.classList.add('done');
