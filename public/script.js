@@ -16,6 +16,31 @@ function postJSON(url, data) {
   });
 }
 
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+}
+
+function updateThemeButtonLabel() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.querySelector('#theme-toggle').textContent = isDark ? '☀️ Light mode' : '🌙 Dark mode';
+}
+
+applyTheme(localStorage.getItem('theme'));
+updateThemeButtonLabel();
+
+document.querySelector('#theme-toggle').addEventListener('click', function () {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const newTheme = isDark ? 'light' : 'dark';
+
+  applyTheme(newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeButtonLabel();
+});
+
 function renderHabit(habit) {
   const list = document.querySelector('#habit-list');
   const li = document.createElement('li');
