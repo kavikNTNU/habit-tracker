@@ -119,3 +119,51 @@
 - [x] 14.2 Improve typography, spacing, and button/card styling using the new variables (plus two real bugs caught by testing in the browser rather than just reading the diff: a `#auth-section` ID selector silently beating `.hidden`'s class selector on specificity, and `.done`'s opacity fading the buttons/history list along with the habit name, fixed by scoping it to a new `.habit-name` span)
 - [x] 14.3 Add a dark mode toggle, reusing the variable system from 14.1 (plus localStorage for persisting the choice across reloads)
 - [x] 14.4 Fix the accessibility gap from the audit: add real `<label>` elements to every form input (username, password, new-habit) — a real fix over placeholder-only fields, not just cosmetic, since placeholder text isn't reliably exposed as a field's accessible name
+
+### 15. Stats & visualizations  [ ] not started
+**Deliverable:** Each habit shows a simple 30-day activity heatmap plus two summary numbers — completion rate over the last 30 days and longest-ever streak (alongside the current streak already shown) — built with plain HTML/CSS/JS, no charting library or new dependency.
+**Concepts:** data aggregation (new), CSS grid (new), loops/date-handling (deepened)
+**Tasks:**
+- [ ] 15.1 Add a GET /api/habits/:id/stats route that queries the last 30 days of logs and returns per-day done/not-done, a completion rate, and the longest-ever streak (a new calculation distinct from calculateStreak's "current streak counting back from today")
+- [ ] 15.2 Build a small CSS Grid heatmap on the frontend: 30 squares per habit, colored based on that day's done/not-done
+- [ ] 15.3 Display completion rate and longest streak as text next to each habit's heatmap, and manually verify against real seeded multi-week data
+
+### 16. Habit resource links  [ ] not started
+**Deliverable:** Each habit can optionally have a link to an external article/resource about that habit, editable and shown as a real clickable link — the parked idea from section 14 finally scoped.
+**Concepts:** schema-design (deepened — nullable optional column), crud-operations (deepened — update, not just create)
+**Tasks:**
+- [ ] 16.1 Add a nullable `resource_url` column to the habits table via a guarded migration, and a route to update it
+- [ ] 16.2 Add a small form/input on the frontend to set or edit a habit's resource link
+- [ ] 16.3 Render the link, when set, as a real `<a href>` next to the habit, opening in a new tab
+
+### 17. Custom habit types & units  [ ] not started
+**Deliverable:** A habit can be tracked as a simple yes/no (today's model) or as a numeric quantity with a unit (e.g. "8 glasses", "30 minutes"), and logging asks for a number when relevant.
+**Concepts:** schema-design (deepened), conditionals (deepened — branching UI/logic per habit type)
+**Tasks:**
+- [ ] 17.1 Add `type` and `unit` columns to habits, defaulting existing habits to today's plain yes/no type
+- [ ] 17.2 Update the log route to accept an optional numeric `amount`, and the create-habit form to pick a type/unit
+- [ ] 17.3 Update the frontend to show a number input instead of just "Mark done" for quantity-type habits, and display the logged amount + unit in history
+
+### 18. Weekly goals  [ ] not started
+**Deliverable:** A habit can be tracked against a weekly target (e.g. "exercise 3x/week") instead of daily, with progress shown as "2/3 this week".
+**Concepts:** date-handling (deepened — week boundaries), sql-basics (deepened — grouping by week)
+**Tasks:**
+- [ ] 18.1 Add a `frequency` (daily/weekly) and `weekly_target` column to habits, building on the type/unit groundwork from section 17
+- [ ] 18.2 Write a query/function that counts a habit's logs within the current calendar week for weekly-type habits
+- [ ] 18.3 Display weekly progress ("2/3 this week") instead of a daily streak for weekly-type habits, and verify against real seeded data spanning a week boundary
+
+### 19. Reminders  [ ] not started
+**Deliverable:** An opt-in browser reminder (e.g. "you haven't logged water today") shown via the Notifications API while the app is open — no backend job scheduler, no email/push infrastructure.
+**Concepts:** browser Notifications API (new), browser permissions (new)
+**Tasks:**
+- [ ] 19.1 Request notification permission from the user via a button, and understand what "opt-in" means for browser permissions
+- [ ] 19.2 On page load (or on demand via a button), check which habits aren't done today and fire a real browser notification for them
+- [ ] 19.3 Add a toggle to enable/disable reminders, persisted the same way as dark mode (localStorage)
+
+### 20. Sharing / multi-user visibility  [ ] not started
+**Deliverable:** A user can share read-only visibility of one habit's streak/progress with another registered user (not full account sharing) — the biggest structural change in the parking lot, saved for last.
+**Concepts:** authorization models (new — deepens protected-routes beyond "yours vs. not yours"), schema-design (deepened — a join/permissions table)
+**Tasks:**
+- [ ] 20.1 Design and add a `shares` table (habit_id, shared_with_user_id), and reason through why this is safer than exposing another user's full account
+- [ ] 20.2 Add a route for a user to share one of their habits by username, and a route for the recipient to view habits shared with them (read-only, no mark-done)
+- [ ] 20.3 Add a simple "Shared with me" section on the frontend showing read-only streaks
