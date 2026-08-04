@@ -111,11 +111,11 @@
 - [x] 13.2 Refactor every fetch call site to use them, and manually re-verify every feature still works (signup, login, logout, add habit, mark done, history, admin stats)
 - [x] 13.3 Run the full automated test suite to prove the refactor didn't break anything — the textbook use case for having tests in the first place (plus discovering the suite doesn't cover the frontend at all)
 
-### 14. Frontend design polish  [ ] not started
+### 14. Frontend design polish  [x] done
 **Deliverable:** A cleaner, more professional-looking UI built on a small CSS variable system, with working dark mode and fixed accessibility labels — kept deliberately simple, no new frameworks or build tools.
 **Concepts:** css custom properties (new), accessibility basics (new)
 **Tasks:**
 - [x] 14.1 Introduce CSS custom properties for a small, deliberate color palette, and refactor existing hardcoded colors to use them
-- [ ] 14.2 Improve typography, spacing, and button/card styling using the new variables
-- [ ] 14.3 Add a dark mode toggle, reusing the variable system from 14.1
-- [ ] 14.4 Fix the accessibility gap from the audit: add real `<label>` elements to every form input
+- [x] 14.2 Improve typography, spacing, and button/card styling using the new variables (plus two real bugs caught by testing in the browser rather than just reading the diff: a `#auth-section` ID selector silently beating `.hidden`'s class selector on specificity, and `.done`'s opacity fading the buttons/history list along with the habit name, fixed by scoping it to a new `.habit-name` span)
+- [x] 14.3 Add a dark mode toggle, reusing the variable system from 14.1 (plus localStorage for persisting the choice across reloads)
+- [x] 14.4 Fix the accessibility gap from the audit: add real `<label>` elements to every form input (username, password, new-habit) — a real fix over placeholder-only fields, not just cosmetic, since placeholder text isn't reliably exposed as a field's accessible name

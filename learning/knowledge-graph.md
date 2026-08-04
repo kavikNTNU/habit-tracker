@@ -7,8 +7,29 @@
 - status: practicing
 - depends-on: css-basics
 - introduced: 2026-07-30
-- last-reviewed: 2026-07-30
-- evidence: defined a small color palette as :root variables (--color-bg, --color-surface, --color-primary, etc.), refactored existing hardcoded colors to use var(--name), and understood this as the same DRY principle already applied to postJSON/getJSON, just for CSS
+- last-reviewed: 2026-08-04
+- evidence: defined a small color palette as :root variables (--color-bg, --color-surface, --color-primary, etc.), refactored existing hardcoded colors to use var(--name), and understood this as the same DRY principle already applied to postJSON/getJSON, just for CSS; extended the same variable names with spacing/typography scales and a dark-mode override block (:root[data-theme="dark"]), confirming the payoff of the pattern first-hand — every existing rule just worked under dark mode with zero changes because they all read from the same variable names
+
+## css-specificity
+- status: introduced
+- depends-on: css-basics
+- introduced: 2026-08-04
+- last-reviewed: 2026-08-04
+- evidence: diagnosed a real bug via the browser (not just reading the diff) where #auth-section's ID selector (display: flex) silently beat .hidden's class selector (display: none) regardless of source order, keeping the login form and app visible simultaneously after signup; fixed by adding !important to .hidden, understanding it as the standard justified use for an "always wins" utility class; separately learned that opacity on a parent creates a single compositing group a child can't opt back out of with opacity: 1, which is why .done's fade had to be re-scoped to a new .habit-name span instead of overridden on children
+
+## accessibility-basics
+- status: practicing
+- depends-on: html-basics
+- introduced: 2026-08-04
+- last-reviewed: 2026-08-04
+- evidence: added real <label for="..."> elements to the username, password, and new-habit inputs (previously relying on placeholder text alone); understood why placeholder is not a reliable substitute for a label — it isn't guaranteed to be exposed as the field's accessible name to assistive tech, and it disappears once the user starts typing; verified the native for/id behavior first-hand by clicking label text and observing focus move into its input
+
+## local-storage
+- status: practicing
+- depends-on: javascript-fullstack
+- introduced: 2026-08-04
+- last-reviewed: 2026-08-04
+- evidence: used localStorage.getItem/setItem to persist a dark-mode preference across reloads, understood it as a key-value store tied to the site's origin (unlike a normal JS variable that resets on script re-run), and correctly reasoned that getItem returning null on first visit falls through to the light-mode default without extra handling; verified persistence first-hand by refreshing the page and confirming dark mode stayed on
 
 ## node-path-module
 - status: practicing

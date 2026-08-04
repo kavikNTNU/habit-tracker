@@ -65,6 +65,12 @@ h1 {
   max-width: 280px;
 }
 
+label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
 input[type="text"],
 input[type="password"] {
   font-family: inherit;
@@ -137,6 +143,7 @@ li button {
 #add-habit-form {
   margin-top: var(--space-lg);
   display: flex;
+  align-items: center;
   gap: var(--space-sm);
 }
 
