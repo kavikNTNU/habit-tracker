@@ -4,7 +4,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const path = require('node:path');
-const { calculateStreak } = require('./streak');
+const { calculateStreak, longestStreakEver } = require('./streak');
 const db = require('./db'); // note: habits.db is ephemeral on Render's free tier — wiped on every redeploy
 const app = express();
 const port = process.env.PORT || 3001;
@@ -145,6 +145,49 @@ app.get('/api/habits/:id/history', requireAuth, function (req, res) {
   `).all(habit.id);
 
   res.json(logs);
+});
+
+app.get('/api/habits/:id/stats', requireAuth, function (req, res) {
+  const habit = db.prepare('SELECT id FROM habits WHERE id = ? AND user_id = ?').get(req.params.id, req.session.userId);
+
+  if (!habit) {
+    return res.status(404).json({ error: 'Habit not found' });
+  }
+
+  const recentDates = db.prepare(`
+    SELECT DISTINCT date(logged_at) AS log_date
+    FROM logs
+    WHERE habit_id = ?
+    AND logged_at >= date('now', '-29 days')
+  `).all(habit.id).map(function (row) {
+    return row.log_date;
+  });
+
+  const recentSet = new Set(recentDates);
+  const heatmap = [];
+
+  for (let i = 29; i >= 0; i--) {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+    const dateStr = date.toISOString().slice(0, 10);
+    heatmap.push({ date: dateStr, done: recentSet.has(dateStr) });
+  }
+
+  const allDates = db.prepare(`
+    SELECT DISTINCT date(logged_at) AS log_date
+    FROM logs
+    WHERE habit_id = ?
+    ORDER BY log_date
+  `).all(habit.id).map(function (row) {
+    return row.log_date;
+  });
+
+  res.json({
+    daysLogged: recentDates.length,
+    totalDays: 30,
+    longestStreak: longestStreakEver(allDates),
+    heatmap: heatmap
+  });
 });
 
 app.post('/api/habits', requireAuth, function (req, res) {
