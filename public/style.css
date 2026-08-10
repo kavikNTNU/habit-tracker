@@ -140,6 +140,29 @@ li button {
   display: none !important;
 }
 
+.stats-summary {
+  font-size: var(--font-size-sm);
+  margin: var(--space-sm) 0 0;
+}
+
+.heatmap {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  max-width: 200px;
+  margin-top: var(--space-xs);
+}
+
+.heatmap-cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  background-color: var(--color-border);
+}
+
+.heatmap-cell.done {
+  background-color: var(--color-primary);
+}
+
 #add-habit-form {
   margin-top: var(--space-lg);
   display: flex;

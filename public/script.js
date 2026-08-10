@@ -93,9 +93,51 @@ function renderHabit(habit) {
       });
   });
 
+  const statsButton = document.createElement('button');
+  statsButton.textContent = 'Stats';
+
+  const statsContainer = document.createElement('div');
+  statsContainer.classList.add('stats-container');
+
+  statsButton.addEventListener('click', function () {
+    if (statsContainer.children.length > 0) {
+      statsContainer.innerHTML = '';
+      return;
+    }
+
+    getJSON('/api/habits/' + habit.id + '/stats')
+      .then(function (stats) {
+        statsContainer.innerHTML = '';
+
+        const summary = document.createElement('p');
+        summary.classList.add('stats-summary');
+        summary.textContent = stats.daysLogged + '/' + stats.totalDays + ' days — longest streak: ' + stats.longestStreak;
+        statsContainer.appendChild(summary);
+
+        const heatmap = document.createElement('div');
+        heatmap.classList.add('heatmap');
+
+        stats.heatmap.forEach(function (day) {
+          const cell = document.createElement('div');
+          cell.classList.add('heatmap-cell');
+
+          if (day.done) {
+            cell.classList.add('done');
+          }
+
+          cell.title = day.date;
+          heatmap.appendChild(cell);
+        });
+
+        statsContainer.appendChild(heatmap);
+      });
+  });
+
   li.appendChild(button);
   li.appendChild(historyButton);
   li.appendChild(historyList);
+  li.appendChild(statsButton);
+  li.appendChild(statsContainer);
   list.appendChild(li);
 }
 

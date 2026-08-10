@@ -120,13 +120,13 @@
 - [x] 14.3 Add a dark mode toggle, reusing the variable system from 14.1 (plus localStorage for persisting the choice across reloads)
 - [x] 14.4 Fix the accessibility gap from the audit: add real `<label>` elements to every form input (username, password, new-habit) — a real fix over placeholder-only fields, not just cosmetic, since placeholder text isn't reliably exposed as a field's accessible name
 
-### 15. Stats & visualizations  [ ] not started
+### 15. Stats & visualizations  [x] done
 **Deliverable:** Each habit shows a simple 30-day activity heatmap plus two summary numbers — completion rate over the last 30 days and longest-ever streak (alongside the current streak already shown) — built with plain HTML/CSS/JS, no charting library or new dependency.
 **Concepts:** data aggregation (new), CSS grid (new), loops/date-handling (deepened)
 **Tasks:**
-- [ ] 15.1 Add a GET /api/habits/:id/stats route that queries the last 30 days of logs and returns per-day done/not-done, a completion rate, and the longest-ever streak (a new calculation distinct from calculateStreak's "current streak counting back from today")
-- [ ] 15.2 Build a small CSS Grid heatmap on the frontend: 30 squares per habit, colored based on that day's done/not-done
-- [ ] 15.3 Display completion rate and longest streak as text next to each habit's heatmap, and manually verify against real seeded multi-week data
+- [x] 15.1 Add a GET /api/habits/:id/stats route that queries the last 30 days of logs and returns per-day done/not-done, a completion rate, and the longest-ever streak (a new calculation distinct from calculateStreak's "current streak counting back from today"). Spec and plan written first (`learning/specs/2026-08-10-habit-stats-route*.md`); added `longestStreakEver` in `streak.js` (full-history scan, distinct from `calculateStreak`'s current-streak-from-today) plus unit tests, then the route itself with route tests. Verified against real seeded data — a habit with a 4-day run in mid-July but only a 1-day current streak correctly reported `longestStreak: 4`, proving it scans full history rather than just the recent tail.
+- [x] 15.2 Build a small CSS Grid heatmap on the frontend: 30 squares per habit, colored based on that day's done/not-done. Used `display: grid; grid-template-columns: repeat(7, 1fr)`, letting the browser auto-wrap 30 cells into weekly rows (first real use of CSS Grid), plus `aspect-ratio: 1` to keep cells square. Lazy-loaded behind a new "Stats" toggle button, same pattern as the existing "History" button, so `/stats` only fires on demand.
+- [x] 15.3 Display completion rate and longest streak as text next to each habit's heatmap, and manually verify against real seeded multi-week data. Combined naturally with 15.2 since both render together on the same toggle. Verified in both light and dark mode in the browser — the "Sleep 8 hours" habit's 4-day mid-July run rendered as 4 consecutive green cells with "6/30 days — longest streak: 4" shown above it.
 
 ### 16. Habit resource links  [ ] not started
 **Deliverable:** Each habit can optionally have a link to an external article/resource about that habit, editable and shown as a real clickable link — the parked idea from section 14 finally scoped.
