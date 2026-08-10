@@ -25,6 +25,7 @@ A web app to track daily habits (like drinking water, doing pushups) and log pro
 - Multiple habit types with custom units — scoped into section 17
 - Sharing/multi-user — scoped into section 20
 - Link to external sources (articles, research, recommendations) for good routines/habit-building — scoped into section 16
+- Restructure the page into distinct layout sections (e.g. a dedicated panel/sidebar listing all habits' resource links, separate from the per-habit cards) — raised 2026-08-11 during section 16, not yet thought through; section 16 itself stays simple (per-habit, inline) for now
 
 ## The trunk — core components
 

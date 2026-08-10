@@ -30,4 +30,13 @@ if (!hasRoleColumn) {
   db.exec("ALTER TABLE users ADD COLUMN role TEXT NOT NULL DEFAULT 'user'");
 }
 
+const habitColumns = db.prepare('PRAGMA table_info(habits)').all();
+const hasResourceUrlColumn = habitColumns.some(function (column) {
+  return column.name === 'resource_url';
+});
+
+if (!hasResourceUrlColumn) {
+  db.exec('ALTER TABLE habits ADD COLUMN resource_url TEXT');
+}
+
 module.exports = db;

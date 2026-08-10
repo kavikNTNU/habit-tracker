@@ -128,13 +128,13 @@
 - [x] 15.2 Build a small CSS Grid heatmap on the frontend: 30 squares per habit, colored based on that day's done/not-done. Used `display: grid; grid-template-columns: repeat(7, 1fr)`, letting the browser auto-wrap 30 cells into weekly rows (first real use of CSS Grid), plus `aspect-ratio: 1` to keep cells square. Lazy-loaded behind a new "Stats" toggle button, same pattern as the existing "History" button, so `/stats` only fires on demand.
 - [x] 15.3 Display completion rate and longest streak as text next to each habit's heatmap, and manually verify against real seeded multi-week data. Combined naturally with 15.2 since both render together on the same toggle. Verified in both light and dark mode in the browser — the "Sleep 8 hours" habit's 4-day mid-July run rendered as 4 consecutive green cells with "6/30 days — longest streak: 4" shown above it.
 
-### 16. Habit resource links  [ ] not started
+### 16. Habit resource links  [x] done
 **Deliverable:** Each habit can optionally have a link to an external article/resource about that habit, editable and shown as a real clickable link — the parked idea from section 14 finally scoped.
 **Concepts:** schema-design (deepened — nullable optional column), crud-operations (deepened — update, not just create)
 **Tasks:**
-- [ ] 16.1 Add a nullable `resource_url` column to the habits table via a guarded migration, and a route to update it
-- [ ] 16.2 Add a small form/input on the frontend to set or edit a habit's resource link
-- [ ] 16.3 Render the link, when set, as a real `<a href>` next to the habit, opening in a new tab
+- [x] 16.1 Add a nullable `resource_url` column to the habits table via a guarded migration, and a route to update it. Migration guarded the same way as the `role` column (check `PRAGMA table_info` before `ALTER TABLE`). Added `PATCH /api/habits/:id` with the same ownership-check pattern as the other per-habit routes; generalized `postJSON` to take an optional `method` param instead of writing a near-duplicate `patchJSON`. Route tests cover setting, clearing, and the ownership 404.
+- [x] 16.2 Add a small form/input on the frontend to set or edit a habit's resource link. New "Edit link" toggle button, same lazy-toggle pattern as History/Stats — reveals an input pre-filled with the current value plus a Save button.
+- [x] 16.3 Render the link, when set, as a real `<a href>` next to the habit, opening in a new tab. Verified end-to-end in the browser: set a link, updated it, cleared it (correctly hides via the existing `.hidden` utility class), and confirmed it survives a page reload — in both light and dark mode. A raised idea about restructuring the page into distinct layout sections (e.g. a dedicated resources panel) was parked in `project.md` rather than scoped here, to keep this section's change small.
 
 ### 17. Custom habit types & units  [ ] not started
 **Deliverable:** A habit can be tracked as a simple yes/no (today's model) or as a numeric quantity with a unit (e.g. "8 glasses", "30 minutes"), and logging asks for a number when relevant.

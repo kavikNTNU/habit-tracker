@@ -4,9 +4,9 @@ function getJSON(url) {
   });
 }
 
-function postJSON(url, data) {
+function postJSON(url, data, method) {
   return fetch(url, {
-    method: 'POST',
+    method: method || 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   }).then(function (response) {
@@ -54,6 +54,24 @@ function renderHabit(habit) {
   nameSpan.classList.add('habit-name');
   nameSpan.textContent = text;
   li.appendChild(nameSpan);
+
+  const resourceLink = document.createElement('a');
+  resourceLink.classList.add('resource-link');
+  resourceLink.target = '_blank';
+  resourceLink.rel = 'noopener noreferrer';
+  li.appendChild(resourceLink);
+
+  function updateResourceLink(url) {
+    if (url) {
+      resourceLink.href = url;
+      resourceLink.textContent = '🔗 Link';
+      resourceLink.classList.remove('hidden');
+    } else {
+      resourceLink.classList.add('hidden');
+    }
+  }
+
+  updateResourceLink(habit.resource_url);
 
   if (habit.done_today) {
     li.classList.add('done');
@@ -133,11 +151,53 @@ function renderHabit(habit) {
       });
   });
 
+  const editLinkButton = document.createElement('button');
+  editLinkButton.textContent = 'Edit link';
+
+  const linkFormContainer = document.createElement('div');
+  linkFormContainer.classList.add('link-form-container');
+
+  editLinkButton.addEventListener('click', function () {
+    if (linkFormContainer.children.length > 0) {
+      linkFormContainer.innerHTML = '';
+      return;
+    }
+
+    const form = document.createElement('form');
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'https://...';
+    input.value = habit.resource_url || '';
+
+    const saveButton = document.createElement('button');
+    saveButton.type = 'submit';
+    saveButton.textContent = 'Save';
+
+    form.appendChild(input);
+    form.appendChild(saveButton);
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      postJSON('/api/habits/' + habit.id, { resource_url: input.value }, 'PATCH')
+        .then(function (result) {
+          habit.resource_url = result.body.resource_url;
+          updateResourceLink(habit.resource_url);
+          linkFormContainer.innerHTML = '';
+        });
+    });
+
+    linkFormContainer.appendChild(form);
+  });
+
   li.appendChild(button);
   li.appendChild(historyButton);
   li.appendChild(historyList);
   li.appendChild(statsButton);
   li.appendChild(statsContainer);
+  li.appendChild(editLinkButton);
+  li.appendChild(linkFormContainer);
   list.appendChild(li);
 }
 

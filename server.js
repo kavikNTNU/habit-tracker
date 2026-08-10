@@ -201,6 +201,20 @@ app.post('/api/habits', requireAuth, function (req, res) {
   res.json({ id: result.lastInsertRowid, name: name });
 });
 
+app.patch('/api/habits/:id', requireAuth, function (req, res) {
+  const habit = db.prepare('SELECT id FROM habits WHERE id = ? AND user_id = ?').get(req.params.id, req.session.userId);
+
+  if (!habit) {
+    return res.status(404).json({ error: 'Habit not found' });
+  }
+
+  const resourceUrl = (req.body.resource_url || '').trim() || null;
+
+  db.prepare('UPDATE habits SET resource_url = ? WHERE id = ?').run(resourceUrl, habit.id);
+
+  res.json({ id: habit.id, resource_url: resourceUrl });
+});
+
 app.post('/api/log', requireAuth, function (req, res) {
   const habit = db.prepare('SELECT id FROM habits WHERE name = ? AND user_id = ?').get(req.body.habit, req.session.userId);
 

@@ -140,6 +140,23 @@ li button {
   display: none !important;
 }
 
+.resource-link {
+  margin-left: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-dark);
+}
+
+.link-form-container form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.link-form-container input {
+  flex: 1;
+}
+
 .stats-summary {
   font-size: var(--font-size-sm);
   margin: var(--space-sm) 0 0;
